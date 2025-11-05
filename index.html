@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CUSTOMIZABLE: Change the page title here -->
+    <title>Cayden | Professional Bio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            /* CUSTOMIZABLE: Change background colors here */
+            background: #0f1419;
+            /* CUSTOMIZABLE: Change main text color here */
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* CUSTOMIZABLE: Change background pattern and gradient colors here */
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="code" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="10" y="20" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">01001010</text><text x="10" y="35" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">11010011</text><text x="10" y="50" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">00110101</text><text x="10" y="65" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">10101100</text><text x="10" y="80" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">01110010</text></pattern></defs><rect width="100%" height="100%" fill="url(%23code)"/></svg>') center/cover,
+                    radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                    linear-gradient(135deg, #0f1419 0%, #1e293b 30%, #334155 100%);
+            z-index: -2;
+        }
+        
+        .shield-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* CUSTOMIZABLE: Change shield size here */
+            width: 200px;
+            height: 240px;
+            z-index: -1;
+            /* CUSTOMIZABLE: Change shield opacity here (0.0 to 1.0) */
+            opacity: 0.08;
+        }
+        
+        .shield {
+            width: 100%;
+            height: 100%;
+            /* CUSTOMIZABLE: Change shield colors here */
+            background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            position: relative;
+            /* CUSTOMIZABLE: Change shield glow effect here */
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
+        }
+        
+        .shield::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #0f1419;
+            border-radius: 50%;
+            border: 8px solid #1d4ed8;
+        }
+        
+        .shield::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            width: 20px;
+            height: 25px;
+            background: #1d4ed8;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .name {
+            font-family: 'Poppins', sans-serif;
+            /* CUSTOMIZABLE: Change name font size here */
+            font-size: 3.5rem;
+            font-weight: 700;
+            /* CUSTOMIZABLE: Change name text gradient colors here */
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            /* CUSTOMIZABLE: Change tagline font size here */
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            /* CUSTOMIZABLE: Change tagline color here */
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        
+        .bio-section {
+            /* CUSTOMIZABLE: Change section background color and transparency here */
+            background: rgba(30, 41, 59, 0.7);
+            /* CUSTOMIZABLE: Change section border color here */
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            /* CUSTOMIZABLE: Change section corner roundness here */
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            /* CUSTOMIZABLE: Change section shadow here */
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .bio-section:hover {
+            transform: translateY(-2px);
+            /* CUSTOMIZABLE: Change section hover border color here */
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            /* CUSTOMIZABLE: Change section title font size here */
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            /* CUSTOMIZABLE: Change section title color here */
+            color: #3b82f6;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            /* CUSTOMIZABLE: Change skill card background and transparency here */
+            background: rgba(59, 130, 246, 0.1);
+            /* CUSTOMIZABLE: Change skill card border color here */
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            /* CUSTOMIZABLE: Change skill card corner roundness here */
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            /* CUSTOMIZABLE: Change how much skill cards lift on hover here */
+            transform: translateY(-5px);
+            /* CUSTOMIZABLE: Change skill card hover shadow here */
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+            /* CUSTOMIZABLE: Change skill card hover background here */
+            background: rgba(59, 130, 246, 0.15);
+            /* CUSTOMIZABLE: Change skill card hover border here */
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .skill-icon {
+            /* CUSTOMIZABLE: Change skill icon size here */
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            /* CUSTOMIZABLE: Change social link background here */
+            background: rgba(59, 130, 246, 0.1);
+            /* CUSTOMIZABLE: Change social link border here */
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            /* CUSTOMIZABLE: Change social link text color here */
+            color: #3b82f6;
+            text-decoration: none;
+            /* CUSTOMIZABLE: Change social link corner roundness here */
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            /* CUSTOMIZABLE: Change social link hover animation color here */
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .social-link:hover::before {
+            left: 100%;
+        }
+        
+        .social-link:hover {
+            /* CUSTOMIZABLE: Change social link hover background here */
+            background: rgba(59, 130, 246, 0.2);
+            /* CUSTOMIZABLE: Change social link hover shadow here */
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+            /* CUSTOMIZABLE: Change how much social links lift on hover here */
+            transform: translateY(-2px);
+            /* CUSTOMIZABLE: Change social link hover border here */
+            border-color: rgba(59, 130, 246, 0.5);
+            /* CUSTOMIZABLE: Change social link hover text color here */
+            color: #ffffff;
+        }
+        
+        .terminal {
+            background: rgba(15, 20, 25, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            color: #e2e8f0;
+            margin: 1rem 0;
+        }
+        
+        .terminal-header {
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .typing {
+            overflow: hidden;
+            border-right: 2px solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 1s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3b82f6; }
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="shield-container">
+        <div class="shield"></div>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <!-- CUSTOMIZABLE: Change your name here -->
+            <h1 class="name">Cayden</h1>
+            <!-- CUSTOMIZABLE: Change your tagline/subtitle here -->
+            <p class="tagline">Tech Enthusiast & Digital Creator</p>
+        </header>
+        
+        <section class="bio-section">
+            <!-- CUSTOMIZABLE: Change section title here -->
+            <h2 class="section-title">About Me</h2>
+            <!-- CUSTOMIZABLE: Change your bio text here -->
+            <p>Hey! I'm Cayden a tech enthusiast, gamer, and lifelong learner. I love exploring new tools, building creative projects, and sharing ideas with others. In my free time, I enjoy racing RC cars, building with LEGO, working on models, and tinkering with all sorts of gadgets. I'm also active in Scouts as an Eagle and a member of the Tribe of Mic-O-Say.</p>
+            <br>
+            <p>Feel free to reach out if you need anything. I am taken by the love of my life.</p>
+        </section>
+        
+        <section class="bio-section">
+            <!-- CUSTOMIZABLE: Change section title here -->
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <!-- CUSTOMIZABLE: Change skill cards below - edit icon, title, and description -->
+                <div class="skill-card">
+                    <span class="skill-icon">💻</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
+                    <h3>Development</h3> <!-- CUSTOMIZABLE: Change skill title here -->
+                    <p>Frontend & Backend Technologies</p> <!-- CUSTOMIZABLE: Change skill description here -->
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🎨</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
+                    <h3>Design</h3> <!-- CUSTOMIZABLE: Change skill title here -->
+                    <p>UI/UX & Visual Design</p> <!-- CUSTOMIZABLE: Change skill description here -->
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🚀</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
+                    <h3>Innovation</h3> <!-- CUSTOMIZABLE: Change skill title here -->
+                    <p>Creative Problem Solving</p> <!-- CUSTOMIZABLE: Change skill description here -->
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">⚡</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
+                    <h3>Performance</h3> <!-- CUSTOMIZABLE: Change skill title here -->
+                    <p>Optimization & Efficiency</p> <!-- CUSTOMIZABLE: Change skill description here -->
+                </div>
+                <div class="skill-card">
+                    <span class="skill-icon">🔒</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
+                    <h3>Cybersecurity</h3> <!-- CUSTOMIZABLE: Change skill title here -->
+                    <p>Security & Protection</p> <!-- CUSTOMIZABLE: Change skill description here -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="bio-section">
+            <!-- CUSTOMIZABLE: Change section title here -->
+            <h2 class="section-title">Projects</h2>
+            <div class="terminal">
+                <!-- CUSTOMIZABLE: Change terminal header text here -->
+                <div class="terminal-header">$ ls -la projects/</div>
+                <!-- CUSTOMIZABLE: Change your projects list below -->
+                <p>🔹 Secure Notes App - Encrypted note-taking application</p>
+                <p>🔹 Anti-Virus Software - Real-time malware protection</p>
+            </div>
+        </section>
+        
+        <section class="bio-section">
+            <!-- CUSTOMIZABLE: Change section title here -->
+            <h2 class="section-title">Connect</h2>
+            <div class="social-links">
+                <!-- CUSTOMIZABLE: Change social links below - edit text and add your actual URLs -->
+                <a href="https://github.com/anonymous-hidden" class="social-link">GitHub</a> <!-- CUSTOMIZABLE: Replace 'yourusername' with your GitHub username -->
+                <a href="discord.html" target="_blank" class="social-link">Discord</a> <!-- Opens Discord contact page in new tab -->
+                <a href="email.html" target="_blank" class="social-link">Email</a> <!-- Opens Email contact page in new tab -->
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Binary trail effect on mouse movement
+        const binaryTrail = [];
+        const maxTrail = 15;
+        
+        document.addEventListener('mousemove', (e) => {
+            // Create binary digit
+            const binary = document.createElement('div');
+            binary.textContent = Math.random() > 0.5 ? '1' : '0';
+            binary.style.cssText = `
+                position: fixed;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                color: rgba(59, 130, 246, 0.7);
+                font-family: 'Courier New', monospace;
+                font-size: 14px;
+                pointer-events: none;
+                z-index: 1000;
+                transition: all 0.5s ease-out;
+            `;
+            document.body.appendChild(binary);
+            
+            // Add to trail array
+            binaryTrail.push(binary);
+            
+            // Animate and remove
+            setTimeout(() => {
+                binary.style.transform = 'translateY(-20px)';
+                binary.style.opacity = '0';
+            }, 50);
+            
+            setTimeout(() => {
+                if (binary.parentNode) {
+                    binary.parentNode.removeChild(binary);
+                }
+            }, 600);
+            
+            // Limit trail length
+            if (binaryTrail.length > maxTrail) {
+                const oldBinary = binaryTrail.shift();
+                if (oldBinary && oldBinary.parentNode) {
+                    oldBinary.parentNode.removeChild(oldBinary);
+                }
+            }
+            
+            // Original cursor effect
+            const cursor = document.querySelector('.cursor');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 12px;
+                    height: 12px;
+                    background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, transparent 70%);
+                    pointer-events: none;
+                    z-index: 9999;
+                    border-radius: 50%;
+                    transition: all 0.1s ease;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            document.querySelector('.cursor').style.left = e.clientX - 6 + 'px';
+            document.querySelector('.cursor').style.top = e.clientY - 6 + 'px';
+        });
+        
+        // Add typing effect to different elements
+        const typeElements = document.querySelectorAll('.typing');
+        typeElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.animation = `typing 3s steps(${element.textContent.length}, end), blink-caret 0.75s step-end infinite`;
+            }, index * 1000);
+        });
+        
+        // Add hover sound effect (optional)
+        document.querySelectorAll('.skill-card, .social-link').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+        
+        // Add subtle parallax effect to shield
+        window.addEventListener('scroll', () => {
+            const shield = document.querySelector('.shield-container');
+            const scrolled = window.pageYOffset;
+            shield.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.1}px)`;
+        });
+    </script>
+</body>
+</html>
