@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Contact</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1e293b 30%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="code" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="10" y="20" font-family="monospace" font-size="8" fill="%23334155" opacity="0.2">01001010</text><text x="10" y="35" font-family="monospace" font-size="8" fill="%23334155" opacity="0.2">11010011</text><text x="10" y="50" font-family="monospace" font-size="8" fill="%23334155" opacity="0.2">00110101</text><text x="10" y="65" font-family="monospace" font-size="8" fill="%23334155" opacity="0.2">10101100</text><text x="10" y="80" font-family="monospace" font-size="8" fill="%23334155" opacity="0.2">01110010</text></pattern></defs><rect width="100%" height="100%" fill="url(%23code)"/></svg>') center/cover;
+            z-index: -1;
+        }
+        
+        .container {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .email-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+            filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.5));
+        }
+        
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .email-address {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            margin: 2rem 0;
+            letter-spacing: 1px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            word-break: break-all;
+        }
+        
+        .email-address::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .copy-btn, .mailto-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 2rem;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .copy-btn:hover, .mailto-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+            background: linear-gradient(135deg, #16a34a, #15803d);
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .copied-msg {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .copied-msg.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 600px) {
+            .email-address {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .copy-btn, .mailto-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <div class="copied-msg" id="copiedMsg">Copied to clipboard!</div>
+    
+    <a href="cyber-bio.html" class="back-btn">← Back</a>
+    
+    <div class="container">
+        <div class="email-icon">📧</div>
+        <h1 class="title">Email Contact</h1>
+        <p class="subtitle">Get in touch via email</p>
+        <div class="email-address" id="emailAddress">anonymous-hide-me-pls@proton.me</div>
+        <div class="button-group">
+            <button class="copy-btn" onclick="copyEmail()">Copy Email</button>
+            <a href="mailto:anonymous-hide-me-pls@proton.me" class="mailto-btn">Open Email App</a>
+        </div>
+    </div>
+    
+    <script>
+        function copyEmail() {
+            const email = document.getElementById('emailAddress').textContent;
+            navigator.clipboard.writeText(email).then(() => {
+                const msg = document.getElementById('copiedMsg');
+                msg.classList.add('show');
+                setTimeout(() => {
+                    msg.classList.remove('show');
+                }, 2000);
+            });
+        }
+        
+        // Add some interactive effects
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.container');
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                const xPercent = (x / rect.width - 0.5) * 20;
+                const yPercent = (y / rect.height - 0.5) * 20;
+                container.style.transform = `perspective(1000px) rotateX(${yPercent}deg) rotateY(${xPercent}deg)`;
+            }
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            const container = document.querySelector('.container');
+            container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+</body>
+</html>
