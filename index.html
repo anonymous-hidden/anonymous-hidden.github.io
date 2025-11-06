@@ -205,6 +205,88 @@
             background: rgba(59, 130, 246, 0.3);
         }
         
+        /* Progress Section Styling */
+        .progress-section {
+            margin-bottom: 25px;
+            padding: 0 5px;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -10px;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+        
+        .progress-handle {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+        
+        .progress-container:hover .progress-handle {
+            opacity: 1;
+        }
+        
+        .progress-handle:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
         .volume-control {
             margin-bottom: 25px;
         }
@@ -640,6 +722,19 @@
             <button id="nextBtn" onclick="nextSong()">⏭</button>
         </div>
         
+        <div class="progress-section">
+            <div class="time-display">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">3:30</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-handle" id="progressHandle"></div>
+                </div>
+            </div>
+        </div>
+        
         <div class="volume-control">
             <label for="volumeSlider">🔊 Volume</label>
             <input type="range" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume(this.value)">
@@ -720,9 +815,20 @@
             <!-- CUSTOMIZABLE: Change section title here -->
             <h2 class="section-title">About Me</h2>
             <!-- CUSTOMIZABLE: Change your bio text here -->
-            <p>Hey! I'm Cayden a tech enthusiast, gamer, and lifelong learner. I love exploring new tools, building creative projects, and sharing ideas with others. In my free time, I enjoy racing RC cars, building with LEGO, working on models, and tinkering with all sorts of gadgets. I'm also active in Scouts as an Eagle and a member of the Tribe of Mic-O-Say.</p>
+            <p>Hi! I'm Cayden — a tech enthusiast, gamer, and lifelong learner. I'm passionate about exploring new tools, building creative projects, and sharing ideas with others.</p>
             <br>
-            <p>Feel free to reach out if you need anything. I am taken by the love of my life.</p>
+            <p>In my free time, I enjoy racing RC cars, building with LEGO, working on models, and tinkering with all kinds of gadgets. I'm also proud to be an Eagle Scout and a member of the Tribe of Mic-O-Say. I believe strongly in the principle: "Treat others how you want to be treated."</p>
+            <br>
+            <p>As a gamer, some of my favorite titles include GTA V, Call of Duty, Minecraft, 7 Days to Die, DayZ, Bloons TD 6, and occasionally ROBLOX.</p>
+            <br>
+            <p>One of my favorite quotes is:</p>
+            <blockquote style="margin: 1rem 0; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 8px; font-style: italic;">
+                "Don't be afraid to fail. It's not the end of the world, and in many ways, it's the first step toward learning something and getting better at it."
+                <br><span style="font-weight: 600; color: #3b82f6;">— Jon Hamm</span>
+            </blockquote>
+            <br>
+            <p>My favorite color is green, and my birthday is January 31st.</p>
+            <p>Feel free to reach out if you ever want to collaborate, share ideas, or just chat. I'm also happily taken by the love of my life.</p>
         </section>
         
         <section class="bio-section">
@@ -778,6 +884,7 @@
                 <a href="https://github.com/anonymous-hidden" class="social-link">GitHub</a> <!-- CUSTOMIZABLE: Replace 'yourusername' with your GitHub username -->
                 <a href="discord.html" target="_blank" class="social-link">Discord</a> <!-- Opens Discord contact page in new tab -->
                 <a href="email.html" target="_blank" class="social-link">Email</a> <!-- Opens Email contact page in new tab -->
+                <a href="#" onclick="copyXboxGamertag()" class="social-link">🎮 Xbox: Coastalion1757</a> <!-- Xbox gamertag - click to copy -->
             </div>
         </section>
         
@@ -917,14 +1024,16 @@
         window.togglePlayPause = function() {
             const playBtn = document.getElementById('playPauseBtn');
             if (isPlaying) {
-                // Pause logic - note: Apple Music embeds don't have direct pause control
+                // Pause logic
                 playBtn.textContent = '▶';
                 isPlaying = false;
+                stopProgressTimer();
             } else {
                 // Play logic
                 playBtn.textContent = '⏸';
                 isPlaying = true;
                 showCurrentSong();
+                startProgressTimer();
             }
         };
         
@@ -942,6 +1051,83 @@
             currentSong = songNumber;
             switchToSong(currentSong);
         };
+        
+        // Progress Bar and Timer Variables
+        let progressTimer;
+        let currentTimeSeconds = 0;
+        let totalTimeSeconds = 210; // Default 3:30 minutes
+        
+        // Song durations (in seconds) - estimated times
+        const songDurations = {
+            1: 205, // Before You Leave Me ~3:25
+            2: 198, // Eternity ~3:18
+            3: 187, // Little Bit Better ~3:07
+            4: 240  // Don't Let Me Go Album ~4:00
+        };
+        
+        // Progress Bar Functions
+        function updateProgress() {
+            if (isPlaying && currentTimeSeconds < totalTimeSeconds) {
+                currentTimeSeconds++;
+                updateProgressDisplay();
+            }
+        }
+        
+        function updateProgressDisplay() {
+            const progressFill = document.getElementById('progressFill');
+            const progressHandle = document.getElementById('progressHandle');
+            const currentTimeEl = document.getElementById('currentTime');
+            const totalTimeEl = document.getElementById('totalTime');
+            
+            if (progressFill && progressHandle && currentTimeEl && totalTimeEl) {
+                // Update progress bar
+                const percentage = (currentTimeSeconds / totalTimeSeconds) * 100;
+                progressFill.style.width = percentage + '%';
+                progressHandle.style.left = percentage + '%';
+                
+                // Update time displays
+                currentTimeEl.textContent = formatTime(currentTimeSeconds);
+                totalTimeEl.textContent = formatTime(totalTimeSeconds);
+            }
+        }
+        
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+        
+        function resetProgress() {
+            currentTimeSeconds = 0;
+            totalTimeSeconds = songDurations[currentSong] || 210;
+            updateProgressDisplay();
+        }
+        
+        function startProgressTimer() {
+            if (progressTimer) clearInterval(progressTimer);
+            progressTimer = setInterval(updateProgress, 1000);
+        }
+        
+        function stopProgressTimer() {
+            if (progressTimer) {
+                clearInterval(progressTimer);
+                progressTimer = null;
+            }
+        }
+        
+        // Add click-to-seek functionality
+        function initializeProgressBar() {
+            const progressContainer = document.getElementById('progressBar');
+            if (progressContainer) {
+                progressContainer.addEventListener('click', function(e) {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const percentage = clickX / rect.width;
+                    currentTimeSeconds = Math.floor(percentage * totalTimeSeconds);
+                    updateProgressDisplay();
+                });
+            }
+        }
         
         function switchToSong(songNumber) {
             // Update current song display
@@ -961,10 +1147,14 @@
             // Show the correct iframe and adjust sidebar if needed
             showCurrentSong();
             
+            // Reset progress for new song
+            resetProgress();
+            
             // Auto-play if currently playing
             if (isPlaying) {
                 const playBtn = document.getElementById('playPauseBtn');
                 if (playBtn) playBtn.textContent = '⏸';
+                startProgressTimer();
             }
         }
         
@@ -1011,6 +1201,98 @@
         // Initialize volume slider appearance and first song
         if (window.changeVolume) window.changeVolume(50);
         switchToSong(1); // Initialize with first song
+        initializeProgressBar(); // Initialize progress bar click functionality
+        resetProgress(); // Set initial progress display
+        
+        // Xbox Gamertag Copy Function
+        window.copyXboxGamertag = function() {
+            const gamertag = "Coastalion1757";
+            
+            // Try to copy to clipboard
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(gamertag).then(() => {
+                    showToast("Xbox gamertag copied to clipboard! 🎮");
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(gamertag);
+                });
+            } else {
+                fallbackCopyTextToClipboard(gamertag);
+            }
+        };
+        
+        // Fallback copy function for older browsers
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast("Xbox gamertag copied to clipboard! 🎮");
+            } catch (err) {
+                showToast("Could not copy gamertag. Please copy manually: Coastalion1757");
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        // Toast notification function
+        function showToast(message) {
+            // Remove existing toast if any
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) existingToast.remove();
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(59, 130, 246, 0.9);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                animation: toastSlideIn 0.3s ease;
+            `;
+            
+            // Add animation styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes toastSlideIn {
+                    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+                }
+                @keyframes toastSlideOut {
+                    from { opacity: 1; transform: translateX(-50%) translateY(0); }
+                    to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                }
+            `;
+            if (!document.querySelector('#toast-styles')) {
+                style.id = 'toast-styles';
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(toast);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.style.animation = 'toastSlideOut 0.3s ease forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
         
         // Close sidebar when clicking outside
         document.addEventListener('click', (e) => {
