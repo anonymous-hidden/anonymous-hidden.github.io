@@ -91,14 +91,14 @@
         .music-sidebar {
             position: fixed;
             top: 0;
-            right: -350px;
+            right: -420px;
             width: 350px;
             height: 100vh;
             background: rgba(30, 41, 59, 0.95);
             backdrop-filter: blur(20px);
             border-left: 1px solid rgba(59, 130, 246, 0.3);
             z-index: 1000;
-            transition: right 0.4s ease;
+            transition: right 0.4s ease, width 0.3s ease;
             overflow-y: auto;
             padding: 20px;
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
@@ -487,6 +487,84 @@
             color: #ffffff;
         }
         
+        /* Security Tools Section Styling */
+        .security-tools {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .tool-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .tool-link:hover::before {
+            left: 100%;
+        }
+        
+        .tool-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .tool-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .tool-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+        
+        /* Responsive design for security tools */
+        @media (min-width: 768px) {
+            .security-tools {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .security-tools {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .terminal {
             background: rgba(15, 20, 25, 0.9);
             border: 1px solid rgba(59, 130, 246, 0.2);
@@ -576,6 +654,12 @@
             <div class="song-item" onclick="selectSong(2)" id="songItem2">
                 <span>🎵 Eternity</span>
             </div>
+            <div class="song-item" onclick="selectSong(3)" id="songItem3">
+                <span>🎵 Little Bit Better</span>
+            </div>
+            <div class="song-item" onclick="selectSong(4)" id="songItem4">
+                <span>💿 Don't Let Me Go (Album)</span>
+            </div>
         </div>
         
         <!-- Hidden Apple Music Embeds -->
@@ -594,6 +678,22 @@
                     style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
                     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
                     src="https://embed.music.apple.com/us/song/eternity/1817735147">
+            </iframe>
+            
+            <iframe id="song3" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                    frameborder="0" 
+                    height="175" 
+                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/us/song/little-bit-better/1728553691">
+            </iframe>
+            
+            <iframe id="song4" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                    frameborder="0" 
+                    height="450" 
+                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/us/album/dont-let-me-go-single/1846158667">
             </iframe>
         </div>
     </div>
@@ -680,6 +780,51 @@
                 <a href="email.html" target="_blank" class="social-link">Email</a> <!-- Opens Email contact page in new tab -->
             </div>
         </section>
+        
+        <section class="bio-section">
+            <h2 class="section-title">🔒 Security & Privacy Tools</h2>
+            <div class="security-tools">
+                <a href="https://www.bitdefender.com/en-us/" target="_blank" class="tool-link">
+                    <div class="tool-icon">🛡️</div>
+                    <div class="tool-info">
+                        <h3>Bitdefender</h3>
+                        <p>Advanced cybersecurity & antivirus protection</p>
+                    </div>
+                </a>
+                
+                <a href="https://proton.me/" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔐</div>
+                    <div class="tool-info">
+                        <h3>Proton</h3>
+                        <p>Encrypted email, VPN & privacy services</p>
+                    </div>
+                </a>
+                
+                <a href="https://veracrypt.jp/en/Home.html" target="_blank" class="tool-link">
+                    <div class="tool-icon">💾</div>
+                    <div class="tool-info">
+                        <h3>VeraCrypt</h3>
+                        <p>Disk encryption & security software</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.wireshark.org/" target="_blank" class="tool-link">
+                    <div class="tool-icon">🌐</div>
+                    <div class="tool-info">
+                        <h3>Wireshark</h3>
+                        <p>Network protocol analyzer & packet capture</p>
+                    </div>
+                </a>
+                
+                <a href="https://nmap.org/" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔍</div>
+                    <div class="tool-info">
+                        <h3>Nmap</h3>
+                        <p>Network discovery & security auditing</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
     
     <script>
@@ -691,10 +836,14 @@
         const toggleBtn = document.getElementById('musicToggleBtn');
         const song1 = document.getElementById('song1');
         const song2 = document.getElementById('song2');
+        const song3 = document.getElementById('song3');
+        const song4 = document.getElementById('song4');
         
         const songs = {
-            1: { name: "Before You Leave Me", artist: "Alex Warren" },
-            2: { name: "Eternity", artist: "Alex Warren" }
+            1: { name: "Before You Leave Me", artist: "Alex Warren", type: "song" },
+            2: { name: "Eternity", artist: "Alex Warren", type: "song" },
+            3: { name: "Little Bit Better", artist: "Alex Warren", type: "song" },
+            4: { name: "Don't Let Me Go", artist: "Alex Warren", type: "album" }
         };
         
         // Sidebar Controls
@@ -724,12 +873,12 @@
         }
         
         function nextSong() {
-            currentSong = currentSong === 2 ? 1 : currentSong + 1;
+            currentSong = currentSong === 4 ? 1 : currentSong + 1;
             switchToSong(currentSong);
         }
         
         function previousSong() {
-            currentSong = currentSong === 1 ? 2 : currentSong - 1;
+            currentSong = currentSong === 1 ? 4 : currentSong - 1;
             switchToSong(currentSong);
         }
         
@@ -740,14 +889,19 @@
         
         function switchToSong(songNumber) {
             // Update current song display
-            document.getElementById('currentSongName').textContent = songs[songNumber].name;
-            document.getElementById('currentArtist').textContent = songs[songNumber].artist;
+            const songData = songs[songNumber];
+            document.getElementById('currentSongName').textContent = songData.name;
+            document.getElementById('currentArtist').textContent = songData.artist;
+            
+            // Update song cover icon based on type
+            const songCover = document.querySelector('.song-cover');
+            songCover.textContent = songData.type === 'album' ? '💿' : '🎶';
             
             // Update playlist active state
             document.querySelectorAll('.song-item').forEach(item => item.classList.remove('active'));
             document.getElementById(`songItem${songNumber}`).classList.add('active');
             
-            // Show the correct iframe
+            // Show the correct iframe and adjust sidebar if needed
             showCurrentSong();
             
             // Auto-play if currently playing
@@ -757,12 +911,26 @@
         }
         
         function showCurrentSong() {
+            // Hide all songs first
+            song1.style.display = 'none';
+            song2.style.display = 'none';
+            song3.style.display = 'none';
+            song4.style.display = 'none';
+            
+            // Reset sidebar width
+            sidebar.style.width = '350px';
+            
+            // Show the current song
             if (currentSong === 1) {
                 song1.style.display = 'block';
-                song2.style.display = 'none';
-            } else {
-                song1.style.display = 'none';
+            } else if (currentSong === 2) {
                 song2.style.display = 'block';
+            } else if (currentSong === 3) {
+                song3.style.display = 'block';
+            } else if (currentSong === 4) {
+                song4.style.display = 'block';
+                // Make sidebar wider for album view
+                sidebar.style.width = '400px';
             }
         }
         
