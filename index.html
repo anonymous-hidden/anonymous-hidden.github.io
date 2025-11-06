@@ -87,6 +87,50 @@
             border-radius: 3px 3px 0 0;
         }
         
+        /* Music Control Styling */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        #musicToggle {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        #musicToggle:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        #musicToggle.playing {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        
+        /* Apple Music Player Styling */
+        #appleMusicPlayer {
+            transition: all 0.3s ease;
+        }
+        
+        #appleMusicPlayer iframe {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -309,6 +353,31 @@
     </style>
 </head>
 <body>
+    <!-- Background Music Player - Apple Music Embeds -->
+    <div id="appleMusicPlayer" style="position: fixed; top: -200px; left: -200px; width: 1px; height: 1px; overflow: hidden; z-index: -1;">
+        <iframe id="song1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                frameborder="0" 
+                height="175" 
+                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                src="https://embed.music.apple.com/us/song/before-you-leave-me/1817735410">
+        </iframe>
+        
+        <iframe id="song2" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                frameborder="0" 
+                height="175" 
+                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                src="https://embed.music.apple.com/us/song/eternity/1817735147">
+        </iframe>
+    </div>
+    
+    <!-- Music Control Button -->
+    <div class="music-control">
+        <button id="musicToggle" onclick="toggleAppleMusic()">🎵</button>
+        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 5px; text-align: center;">Music Playlist</p>
+    </div>
+
     <div class="background-overlay"></div>
     <div class="shield-container">
         <div class="shield"></div>
@@ -389,6 +458,154 @@
     </div>
     
     <script>
+        // Apple Music Playlist Control Functions
+        let musicPlayerVisible = false;
+        let currentSong = 1;
+        const musicToggle = document.getElementById('musicToggle');
+        const appleMusicPlayer = document.getElementById('appleMusicPlayer');
+        const song1 = document.getElementById('song1');
+        const song2 = document.getElementById('song2');
+        
+        const songTitles = {
+            1: "Before You Leave Me",
+            2: "Eternity"
+        };
+        
+        function toggleAppleMusic() {
+            if (!musicPlayerVisible) {
+                showMusicPlayer();
+            }
+        }
+        
+        function showMusicPlayer() {
+            // Show the Apple Music player
+            appleMusicPlayer.style.position = 'fixed';
+            appleMusicPlayer.style.top = '20px';
+            appleMusicPlayer.style.right = '20px';
+            appleMusicPlayer.style.left = 'auto';
+            appleMusicPlayer.style.width = '320px';
+            appleMusicPlayer.style.height = '220px'; // Increased height for controls
+            appleMusicPlayer.style.zIndex = '1001';
+            appleMusicPlayer.style.overflow = 'visible';
+            appleMusicPlayer.style.borderRadius = '10px';
+            appleMusicPlayer.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+            appleMusicPlayer.style.background = 'rgba(30, 41, 59, 0.95)';
+            appleMusicPlayer.style.padding = '10px';
+            appleMusicPlayer.style.backdropFilter = 'blur(15px)';
+            
+            musicToggle.style.display = 'none'; // Hide the button when player is shown
+            musicPlayerVisible = true;
+            
+            // Add controls if they don't exist
+            if (!document.getElementById('musicControls')) {
+                addMusicControls();
+            }
+            
+            showCurrentSong();
+        }
+        
+        function addMusicControls() {
+            const controlsDiv = document.createElement('div');
+            controlsDiv.id = 'musicControls';
+            controlsDiv.style.cssText = `
+                position: absolute;
+                top: -5px;
+                left: 0;
+                right: 0;
+                height: 40px;
+                background: rgba(59, 130, 246, 0.9);
+                border-radius: 10px 10px 0 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 15px;
+                color: white;
+                font-size: 0.9rem;
+                font-weight: 500;
+            `;
+            
+            controlsDiv.innerHTML = `
+                <button onclick="switchSong()" style="
+                    background: rgba(255, 255, 255, 0.2);
+                    border: none;
+                    border-radius: 15px;
+                    padding: 5px 10px;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 0.8rem;
+                    transition: background 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
+                   onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+                    Switch Song
+                </button>
+                <span id="currentSongTitle">${songTitles[currentSong]}</span>
+                <button onclick="hideAppleMusic()" style="
+                    background: rgba(255, 255, 255, 0.2);
+                    border: none;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.3s ease;
+                " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
+                   onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+                    ✕
+                </button>
+            `;
+            
+            appleMusicPlayer.appendChild(controlsDiv);
+        }
+        
+        function switchSong() {
+            currentSong = currentSong === 1 ? 2 : 1;
+            showCurrentSong();
+            updateSongTitle();
+        }
+        
+        function showCurrentSong() {
+            if (currentSong === 1) {
+                song1.style.display = 'block';
+                song2.style.display = 'none';
+            } else {
+                song1.style.display = 'none';
+                song2.style.display = 'block';
+            }
+        }
+        
+        function updateSongTitle() {
+            const titleElement = document.getElementById('currentSongTitle');
+            if (titleElement) {
+                titleElement.textContent = songTitles[currentSong];
+            }
+        }
+        
+        function hideAppleMusic() {
+            // Hide the Apple Music player
+            appleMusicPlayer.style.position = 'fixed';
+            appleMusicPlayer.style.top = '-200px';
+            appleMusicPlayer.style.left = '-200px';
+            appleMusicPlayer.style.width = '1px';
+            appleMusicPlayer.style.height = '1px';
+            appleMusicPlayer.style.zIndex = '-1';
+            appleMusicPlayer.style.overflow = 'hidden';
+            appleMusicPlayer.style.background = 'none';
+            appleMusicPlayer.style.padding = '0';
+            
+            musicToggle.style.display = 'block'; // Show the button again
+            musicPlayerVisible = false;
+            
+            // Remove controls
+            const controls = document.getElementById('musicControls');
+            if (controls) {
+                controls.remove();
+            }
+        }
+
         // Binary trail effect on mouse movement
         const binaryTrail = [];
         const maxTrail = 15;
