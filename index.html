@@ -823,42 +823,98 @@
                         <p>Network discovery & security auditing</p>
                     </div>
                 </a>
+                
+                <a href="https://www.manageengine.com/vulnerability-management/integrated-vulnerability-and-patch-management.html" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔧</div>
+                    <div class="tool-info">
+                        <h3>ManageEngine</h3>
+                        <p>Integrated vulnerability & patch management</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.cobaltstrike.com/" target="_blank" class="tool-link">
+                    <div class="tool-icon">⚔️</div>
+                    <div class="tool-info">
+                        <h3>Cobalt Strike</h3>
+                        <p>Advanced threat emulation & adversary simulation</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.aikido.dev/use-cases/vulnerability-management" target="_blank" class="tool-link">
+                    <div class="tool-icon">🥋</div>
+                    <div class="tool-info">
+                        <h3>Aikido Security</h3>
+                        <p>Application security & vulnerability management</p>
+                    </div>
+                </a>
+                
+                <a href="https://hashcat.net/hashcat/" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔓</div>
+                    <div class="tool-info">
+                        <h3>Hashcat</h3>
+                        <p>Advanced password recovery & hash cracking</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.exterro.com/digital-forensics-software/forensic-toolkit" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔬</div>
+                    <div class="tool-info">
+                        <h3>Exterro FTK</h3>
+                        <p>Digital forensics & incident response toolkit</p>
+                    </div>
+                </a>
             </div>
         </section>
     </div>
     
     <script>
-        // Music Sidebar Control Functions
-        let currentSong = 1;
-        let isPlaying = false;
-        let currentVolume = 50;
-        const sidebar = document.getElementById('musicSidebar');
-        const toggleBtn = document.getElementById('musicToggleBtn');
-        const song1 = document.getElementById('song1');
-        const song2 = document.getElementById('song2');
-        const song3 = document.getElementById('song3');
-        const song4 = document.getElementById('song4');
-        
-        const songs = {
-            1: { name: "Before You Leave Me", artist: "Alex Warren", type: "song" },
-            2: { name: "Eternity", artist: "Alex Warren", type: "song" },
-            3: { name: "Little Bit Better", artist: "Alex Warren", type: "song" },
-            4: { name: "Don't Let Me Go", artist: "Alex Warren", type: "album" }
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Music Sidebar Control Functions
+            let currentSong = 1;
+            let isPlaying = false;
+            let currentVolume = 50;
+            const sidebar = document.getElementById('musicSidebar');
+            const toggleBtn = document.getElementById('musicToggleBtn');
+            const song1 = document.getElementById('song1');
+            const song2 = document.getElementById('song2');
+            const song3 = document.getElementById('song3');
+            const song4 = document.getElementById('song4');
+            
+            const songs = {
+                1: { name: "Before You Leave Me", artist: "Alex Warren", type: "song" },
+                2: { name: "Eternity", artist: "Alex Warren", type: "song" },
+                3: { name: "Little Bit Better", artist: "Alex Warren", type: "song" },
+                4: { name: "Don't Let Me Go", artist: "Alex Warren", type: "album" }
+            };
+            
+        // Debug: Check if elements are found
+        console.log('Music Player Initialization:');
+        console.log('Sidebar:', sidebar);
+        console.log('Toggle Button:', toggleBtn);
+        console.log('Song elements:', { song1, song2, song3, song4 });
+
+        // Make functions globally accessible for onclick handlers
+        window.openSidebar = function() {
+            console.log('Opening sidebar...');
+            if (sidebar) {
+                sidebar.classList.add('open');
+                if (toggleBtn) toggleBtn.style.display = 'none';
+            } else {
+                console.error('Sidebar element not found!');
+            }
         };
         
-        // Sidebar Controls
-        function openSidebar() {
-            sidebar.classList.add('open');
-            toggleBtn.style.display = 'none';
-        }
-        
-        function toggleSidebar() {
-            sidebar.classList.remove('open');
-            toggleBtn.style.display = 'flex';
-        }
+        window.toggleSidebar = function() {
+            console.log('Toggling sidebar...');
+            if (sidebar) {
+                sidebar.classList.remove('open');
+                if (toggleBtn) toggleBtn.style.display = 'flex';
+            }
+        };
         
         // Music Controls
-        function togglePlayPause() {
+        window.togglePlayPause = function() {
             const playBtn = document.getElementById('playPauseBtn');
             if (isPlaying) {
                 // Pause logic - note: Apple Music embeds don't have direct pause control
@@ -870,22 +926,22 @@
                 isPlaying = true;
                 showCurrentSong();
             }
-        }
+        };
         
-        function nextSong() {
+        window.nextSong = function() {
             currentSong = currentSong === 4 ? 1 : currentSong + 1;
             switchToSong(currentSong);
-        }
+        };
         
-        function previousSong() {
+        window.previousSong = function() {
             currentSong = currentSong === 1 ? 4 : currentSong - 1;
             switchToSong(currentSong);
-        }
+        };
         
-        function selectSong(songNumber) {
+        window.selectSong = function(songNumber) {
             currentSong = songNumber;
             switchToSong(currentSong);
-        }
+        };
         
         function switchToSong(songNumber) {
             // Update current song display
@@ -895,68 +951,71 @@
             
             // Update song cover icon based on type
             const songCover = document.querySelector('.song-cover');
-            songCover.textContent = songData.type === 'album' ? '💿' : '🎶';
+            if (songCover) songCover.textContent = songData.type === 'album' ? '💿' : '🎶';
             
             // Update playlist active state
             document.querySelectorAll('.song-item').forEach(item => item.classList.remove('active'));
-            document.getElementById(`songItem${songNumber}`).classList.add('active');
+            const songItem = document.getElementById(`songItem${songNumber}`);
+            if (songItem) songItem.classList.add('active');
             
             // Show the correct iframe and adjust sidebar if needed
             showCurrentSong();
             
             // Auto-play if currently playing
             if (isPlaying) {
-                document.getElementById('playPauseBtn').textContent = '⏸';
+                const playBtn = document.getElementById('playPauseBtn');
+                if (playBtn) playBtn.textContent = '⏸';
             }
         }
         
         function showCurrentSong() {
             // Hide all songs first
-            song1.style.display = 'none';
-            song2.style.display = 'none';
-            song3.style.display = 'none';
-            song4.style.display = 'none';
+            if (song1) song1.style.display = 'none';
+            if (song2) song2.style.display = 'none';
+            if (song3) song3.style.display = 'none';
+            if (song4) song4.style.display = 'none';
             
             // Reset sidebar width
-            sidebar.style.width = '350px';
+            if (sidebar) sidebar.style.width = '350px';
             
             // Show the current song
-            if (currentSong === 1) {
+            if (currentSong === 1 && song1) {
                 song1.style.display = 'block';
-            } else if (currentSong === 2) {
+            } else if (currentSong === 2 && song2) {
                 song2.style.display = 'block';
-            } else if (currentSong === 3) {
+            } else if (currentSong === 3 && song3) {
                 song3.style.display = 'block';
-            } else if (currentSong === 4) {
+            } else if (currentSong === 4 && song4) {
                 song4.style.display = 'block';
                 // Make sidebar wider for album view
-                sidebar.style.width = '400px';
+                if (sidebar) sidebar.style.width = '400px';
             }
         }
         
-        function changeVolume(value) {
+        window.changeVolume = function(value) {
             currentVolume = value;
-            document.getElementById('volumeValue').textContent = value + '%';
+            const volumeValueElement = document.getElementById('volumeValue');
+            if (volumeValueElement) volumeValueElement.textContent = value + '%';
             
             // Note: Apple Music embeds don't support direct volume control
             // This is more for UI feedback and could be extended with Web Audio API
             
             // Visual feedback for volume change
             const slider = document.getElementById('volumeSlider');
-            const percentage = (value / 100) * 100;
-            slider.style.background = `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${percentage}%, rgba(255,255,255,0.2) ${percentage}%, rgba(255,255,255,0.2) 100%)`;
-        }
+            if (slider) {
+                const percentage = (value / 100) * 100;
+                slider.style.background = `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${percentage}%, rgba(255,255,255,0.2) ${percentage}%, rgba(255,255,255,0.2) 100%)`;
+            }
+        };
         
-        // Initialize volume slider appearance
-        window.addEventListener('load', () => {
-            changeVolume(50);
-            switchToSong(1); // Initialize with first song
-        });
+        // Initialize volume slider appearance and first song
+        if (window.changeVolume) window.changeVolume(50);
+        switchToSong(1); // Initialize with first song
         
         // Close sidebar when clicking outside
         document.addEventListener('click', (e) => {
-            if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target) && sidebar.classList.contains('open')) {
-                toggleSidebar();
+            if (sidebar && toggleBtn && !sidebar.contains(e.target) && !toggleBtn.contains(e.target) && sidebar.classList.contains('open')) {
+                if (window.toggleSidebar) window.toggleSidebar();
             }
         });
 
@@ -1047,6 +1106,8 @@
             const scrolled = window.pageYOffset;
             shield.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.1}px)`;
         });
+        
+        }); // End of DOMContentLoaded
     </script>
 </body>
 </html>
