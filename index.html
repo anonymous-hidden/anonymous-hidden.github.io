@@ -196,9 +196,7 @@
         }
 
         .song-cover {
-            font-size: 1.8rem;
-            margin-left: 12px;
-            flex-shrink: 0;
+            display: none;
         }
 
         /* Apple Music embed area */
@@ -588,10 +586,7 @@
         }
         
         .skill-icon {
-            /* CUSTOMIZABLE: Change skill icon size here */
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+            display: none;
         }
         
         .social-links {
@@ -695,10 +690,7 @@
         }
         
         .tool-icon {
-            font-size: 2.5rem;
-            margin-right: 15px;
-            min-width: 60px;
-            text-align: center;
+            display: none;
         }
         
         .tool-info h3 {
@@ -824,7 +816,7 @@
     <!-- Music Sidebar -->
     <div id="musicSidebar" class="music-sidebar">
         <div class="sidebar-header">
-            <h3>🎵 Music</h3>
+            <h3>Music</h3>
             <button id="sidebarToggle" onclick="toggleSidebar()">✕</button>
         </div>
 
@@ -875,19 +867,15 @@
             <div class="playlist">
                 <h4>Playlist</h4>
                 <div class="song-item active" onclick="selectSong(1)" id="songItem1">
-                    <span class="song-item-icon">🎵</span>
                     <span>Before You Leave Me</span>
                 </div>
                 <div class="song-item" onclick="selectSong(2)" id="songItem2">
-                    <span class="song-item-icon">🎵</span>
                     <span>Eternity</span>
                 </div>
                 <div class="song-item" onclick="selectSong(3)" id="songItem3">
-                    <span class="song-item-icon">🎵</span>
                     <span>Little Bit Better</span>
                 </div>
                 <div class="song-item" onclick="selectSong(4)" id="songItem4">
-                    <span class="song-item-icon">💿</span>
                     <span>Don't Let Me Go (Album)</span>
                 </div>
             </div>
@@ -896,19 +884,19 @@
 
     <!-- Music Toggle Button -->
     <div id="musicToggleBtn" class="music-toggle-btn" onclick="openSidebar()">
-        🎵
+        ♪
     </div>
 
     <!-- Tetris Game Button -->
     <div id="tetrisToggleBtn" class="tetris-toggle-btn" onclick="openTetris()">
-        🎮
+        T
     </div>
 
     <!-- Tetris Game Modal -->
     <div id="tetrisModal" class="tetris-modal">
         <div class="tetris-container">
             <div class="tetris-header">
-                <h2>🎮 Tetris</h2>
+                <h2>Tetris</h2>
                 <button class="tetris-close" onclick="closeTetris()">✕</button>
             </div>
             <div class="tetris-game-area">
@@ -1017,7 +1005,7 @@
             <div class="security-tools">
 
                 <a href="https://github.com/anonymous-hidden/darklock-secure-notes" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔐</div>
+                    <div class="tool-icon"></div>
                     <div class="tool-info">
                         <h3>Darklock Secure Notes</h3>
                         <p>Zero-knowledge, end-to-end encrypted note-taking for Linux, Windows &amp; Web. Notes encrypted client-side with XChaCha20-Poly1305.</p>
@@ -1085,12 +1073,12 @@
                 <a href="https://github.com/anonymous-hidden" class="social-link">GitHub</a> <!-- CUSTOMIZABLE: Replace 'yourusername' with your GitHub username -->
                 <a href="discord.html" target="_blank" class="social-link">Discord</a> <!-- Opens Discord contact page in new tab -->
                 <a href="email.html" target="_blank" class="social-link">Email</a> <!-- Opens Email contact page in new tab -->
-                <a href="#" onclick="copyXboxGamertag()" class="social-link">🎮 Xbox: Coastalion1757</a> <!-- Xbox gamertag - click to copy -->
+                <a href="#" onclick="copyXboxGamertag()" class="social-link">Xbox: Coastalion1757</a> <!-- Xbox gamertag - click to copy -->
             </div>
         </section>
         
         <section class="bio-section">
-            <h2 class="section-title">🔒 Security & Privacy Tools</h2>
+            <h2 class="section-title">Security & Privacy Tools</h2>
             <div class="security-tools">
                 <a href="https://www.bitdefender.com/en-us/" target="_blank" class="tool-link">
                     <div class="tool-icon">🛡️</div>
@@ -1219,7 +1207,7 @@
             document.getElementById('currentArtist').textContent = songData.artist;
 
             const songCover = document.querySelector('.song-cover');
-            if (songCover) songCover.textContent = songData.type === 'album' ? '💿' : '🎶';
+            if (songCover) songCover.textContent = '';
 
             // Update playlist active state
             document.querySelectorAll('.song-item').forEach(item => item.classList.remove('active'));
