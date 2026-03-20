@@ -714,6 +714,45 @@
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.4;
         }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .project-lang {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: #93c5fd;
+        }
+
+        .project-lang.lang-ts { background: rgba(49, 120, 198, 0.15); border-color: rgba(49, 120, 198, 0.3); color: #60a5fa; }
+        .project-lang.lang-rust { background: rgba(222, 100, 30, 0.12); border-color: rgba(222, 100, 30, 0.25); color: #fb923c; }
+        .project-lang.lang-js { background: rgba(234, 179, 8, 0.12); border-color: rgba(234, 179, 8, 0.25); color: #fbbf24; }
+        .project-lang.lang-py { background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.25); color: #93c5fd; }
+        .project-lang.lang-sh { background: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.2); color: #86efac; }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.7rem;
+            padding: 2px 7px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
         
         /* Responsive design for security tools */
         @media (min-width: 768px) {
@@ -974,14 +1013,67 @@
         </section>
         
         <section class="bio-section">
-            <!-- CUSTOMIZABLE: Change section title here -->
             <h2 class="section-title">Projects</h2>
-            <div class="terminal">
-                <!-- CUSTOMIZABLE: Change terminal header text here -->
-                <div class="terminal-header">$ ls -la projects/</div>
-                <!-- CUSTOMIZABLE: Change your projects list below -->
-                <p>🔹 Secure Notes App - Encrypted note-taking application</p>
-                <p>🔹 Anti-Virus Software - Real-time malware protection</p>
+            <div class="security-tools">
+
+                <a href="https://github.com/anonymous-hidden/darklock-secure-notes" target="_blank" class="tool-link">
+                    <div class="tool-icon">🔐</div>
+                    <div class="tool-info">
+                        <h3>Darklock Secure Notes</h3>
+                        <p>Zero-knowledge, end-to-end encrypted note-taking for Linux, Windows &amp; Web. Notes encrypted client-side with XChaCha20-Poly1305.</p>
+                        <div class="project-meta">
+                            <span class="project-lang lang-ts">TypeScript</span>
+                            <span class="project-badge">MIT License</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/anonymous-hidden/darklock-guard" target="_blank" class="tool-link">
+                    <div class="tool-icon">🛡️</div>
+                    <div class="tool-info">
+                        <h3>Darklock Guard</h3>
+                        <p>Tamper-resistant desktop security app with layered integrity monitoring, encrypted configuration storage, and verifiable event logging.</p>
+                        <div class="project-meta">
+                            <span class="project-lang lang-rust">Rust</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/anonymous-hidden/Darklock-discord-bot" target="_blank" class="tool-link">
+                    <div class="tool-icon">🤖</div>
+                    <div class="tool-info">
+                        <h3>Darklock Discord Bot</h3>
+                        <p>Custom Discord bot built for the Darklock ecosystem.</p>
+                        <div class="project-meta">
+                            <span class="project-lang lang-js">JavaScript</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/anonymous-hidden/secure-notes" target="_blank" class="tool-link">
+                    <div class="tool-icon">📝</div>
+                    <div class="tool-info">
+                        <h3>Secure Notes (Python)</h3>
+                        <p>Secure notes app with Fernet (AES) encryption and a Tkinter UI. Per-user password-protected private note storage.</p>
+                        <div class="project-meta">
+                            <span class="project-lang lang-py">Python</span>
+                            <span class="project-badge">MIT License</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/anonymous-hidden/discord-nukebot-for-linux" target="_blank" class="tool-link">
+                    <div class="tool-icon">🐧</div>
+                    <div class="tool-info">
+                        <h3>Discord Nukebot for Linux</h3>
+                        <p>Fork of TKperson's Discord nuke bot, modified and adapted for Linux systems.</p>
+                        <div class="project-meta">
+                            <span class="project-lang lang-sh">Shell</span>
+                            <span class="project-badge">Fork</span>
+                        </div>
+                    </div>
+                </a>
+
             </div>
         </section>
         
