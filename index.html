@@ -91,304 +91,210 @@
         .music-sidebar {
             position: fixed;
             top: 0;
-            right: -420px;
-            width: 350px;
+            right: -400px;
+            width: 380px;
             height: 100vh;
-            background: rgba(30, 41, 59, 0.95);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(59, 130, 246, 0.3);
+            background: rgba(15, 20, 30, 0.97);
+            backdrop-filter: blur(24px);
+            border-left: 1px solid rgba(59, 130, 246, 0.15);
             z-index: 1000;
-            transition: right 0.4s ease, width 0.3s ease;
+            transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
             overflow-y: auto;
-            padding: 20px;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            overflow-x: hidden;
+            padding: 0;
+            box-shadow: -16px 0 48px rgba(0, 0, 0, 0.5);
         }
-        
+        .music-sidebar::-webkit-scrollbar { width: 4px; }
+        .music-sidebar::-webkit-scrollbar-track { background: transparent; }
+        .music-sidebar::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 4px; }
+
         .music-sidebar.open {
             right: 0;
         }
-        
+
         .sidebar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 20px 24px 16px;
+            position: sticky;
+            top: 0;
+            background: rgba(15, 20, 30, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 2;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
-        
+
         .sidebar-header h3 {
             color: #ffffff;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
+
         #sidebarToggle {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 34px;
+            height: 34px;
+            color: #94a3b8;
             cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
         #sidebarToggle:hover {
-            background: rgba(59, 130, 246, 0.4);
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
-        
+
+        .sidebar-content {
+            padding: 20px 24px 24px;
+        }
+
+        /* Now Playing card */
         .current-song {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            padding: 15px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            background: rgba(59, 130, 246, 0.08);
+            border-radius: 14px;
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            transition: all 0.25s ease;
         }
-        
-        .song-info {
-            flex: 1;
-        }
-        
-        .song-info h4 {
-            color: #ffffff;
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-        }
-        
-        .song-info p {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        
-        .song-cover {
-            font-size: 2rem;
-            margin-left: 15px;
-        }
-        
-        .music-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .music-controls button {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .music-controls button:hover {
-            background: rgba(59, 130, 246, 0.4);
-            transform: scale(1.1);
-        }
-        
-        #playPauseBtn {
-            width: 55px;
-            height: 55px;
-            font-size: 1.4rem;
-            background: rgba(59, 130, 246, 0.3);
-        }
-        
-        /* Progress Section Styling */
-        .progress-section {
-            margin-bottom: 25px;
-            padding: 0 5px;
-        }
-        
-        .time-display {
-            display: flex;
-            justify-content: space-between;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .progress-container {
-            position: relative;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            cursor: pointer;
-            margin-bottom: 5px;
-        }
-        
-        .progress-bar {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-            border-radius: 3px;
-            width: 0%;
-            transition: width 0.1s ease;
-            position: relative;
-        }
-        
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -10px;
-            width: 20px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-20px); }
-            100% { transform: translateX(20px); }
-        }
-        
-        .progress-handle {
-            position: absolute;
-            top: 50%;
-            left: 0%;
-            width: 14px;
-            height: 14px;
-            background: #ffffff;
-            border: 2px solid #3b82f6;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            opacity: 0;
-        }
-        
-        .progress-container:hover .progress-handle {
-            opacity: 1;
-        }
-        
-        .progress-handle:hover {
-            transform: translate(-50%, -50%) scale(1.2);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        .current-song:hover {
+            background: rgba(59, 130, 246, 0.12);
         }
 
-        .volume-control {
-            margin-bottom: 25px;
+        .song-info {
+            flex: 1;
+            min-width: 0;
         }
-        
-        .volume-control label {
-            display: block;
+
+        .song-info h4 {
             color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            margin: 0 0 3px 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        
-        #volumeSlider {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            outline: none;
-            margin-bottom: 5px;
-        }
-        
-        #volumeSlider::-webkit-slider-thumb {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #3b82f6;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        
-        #volumeSlider::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            background: #3b82f6;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-        }
-        
-        #volumeValue {
-            color: rgba(255, 255, 255, 0.7);
+
+        .song-info p {
+            color: #64748b;
+            margin: 0;
             font-size: 0.8rem;
         }
-        
-        .playlist {
-            margin-top: 20px;
+
+        .song-cover {
+            font-size: 1.8rem;
+            margin-left: 12px;
+            flex-shrink: 0;
         }
-        
-        .playlist h4 {
-            color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        
-        .song-item {
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 8px;
-            cursor: pointer;
+
+        /* Apple Music embed area */
+        .embed-container {
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            min-height: 175px;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
         }
-        
+        .embed-container iframe {
+            display: block;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        /* Playlist */
+        .playlist {
+            margin-top: 0;
+        }
+
+        .playlist h4 {
+            color: #64748b;
+            margin-bottom: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .song-item {
+            padding: 11px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .song-item:hover {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.15);
+        }
+
+        .song-item.active {
+            background: rgba(59, 130, 246, 0.15);
             border-color: rgba(59, 130, 246, 0.3);
         }
-        
-        .song-item.active {
-            background: rgba(59, 130, 246, 0.3);
-            border-color: rgba(59, 130, 246, 0.5);
+        .song-item.active .song-item-icon {
+            color: #3b82f6;
         }
-        
-        .song-item span {
-            color: #ffffff;
+
+        .song-item-icon {
             font-size: 0.9rem;
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
         }
-        
+
+        .song-item span {
+            color: #e2e8f0;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
         .music-toggle-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: rgba(15, 20, 30, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 999;
         }
-        
+
         .music-toggle-btn:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
         }
         
         /* Tetris Game Styling */
@@ -571,14 +477,9 @@
             cursor: not-allowed;
         }
 
-        /* Apple Music Player Styling */
-        #appleMusicPlayer {
-            transition: all 0.3s ease;
-        }
-        
-        #appleMusicPlayer iframe {
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        @keyframes shimmer {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
         }
 
         .container {
@@ -884,95 +785,76 @@
     <!-- Music Sidebar -->
     <div id="musicSidebar" class="music-sidebar">
         <div class="sidebar-header">
-            <h3>🎵 Music Player</h3>
-            <button id="sidebarToggle" onclick="toggleSidebar()">←</button>
+            <h3>🎵 Music</h3>
+            <button id="sidebarToggle" onclick="toggleSidebar()">✕</button>
         </div>
-        
-        <div class="current-song">
-            <div class="song-info">
-                <h4 id="currentSongName">Before You Leave Me</h4>
-                <p id="currentArtist">Alex Warren</p>
+
+        <div class="sidebar-content">
+            <div class="current-song">
+                <div class="song-info">
+                    <h4 id="currentSongName">Before You Leave Me</h4>
+                    <p id="currentArtist">Alex Warren</p>
+                </div>
+                <div class="song-cover">🎶</div>
             </div>
-            <div class="song-cover">🎶</div>
-        </div>
-        
-        <div class="music-controls">
-            <button id="prevBtn" onclick="previousSong()">⏮</button>
-            <button id="playPauseBtn" onclick="togglePlayPause()">▶</button>
-            <button id="nextBtn" onclick="nextSong()">⏭</button>
-        </div>
-        
-        <div class="progress-section">
-            <div class="time-display">
-                <span id="currentTime">0:00</span>
-                <span id="totalTime">3:30</span>
+
+            <!-- Apple Music Embed - visible and functional -->
+            <div class="embed-container" id="embedContainer">
+                <iframe id="song1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                        frameborder="0"
+                        height="175"
+                        style="width:100%;overflow:hidden;"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        src="https://embed.music.apple.com/us/song/before-you-leave-me/1817735410">
+                </iframe>
+
+                <iframe id="song2" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                        frameborder="0"
+                        height="175"
+                        style="width:100%;overflow:hidden;display:none;"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        src="https://embed.music.apple.com/us/song/eternity/1817735147">
+                </iframe>
+
+                <iframe id="song3" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                        frameborder="0"
+                        height="175"
+                        style="width:100%;overflow:hidden;display:none;"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        src="https://embed.music.apple.com/us/song/little-bit-better/1728553691">
+                </iframe>
+
+                <iframe id="song4" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                        frameborder="0"
+                        height="450"
+                        style="width:100%;overflow:hidden;display:none;"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                        src="https://embed.music.apple.com/us/album/dont-let-me-go-single/1846158667">
+                </iframe>
             </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar">
-                    <div class="progress-fill" id="progressFill"></div>
-                    <div class="progress-handle" id="progressHandle"></div>
+
+            <div class="playlist">
+                <h4>Playlist</h4>
+                <div class="song-item active" onclick="selectSong(1)" id="songItem1">
+                    <span class="song-item-icon">🎵</span>
+                    <span>Before You Leave Me</span>
+                </div>
+                <div class="song-item" onclick="selectSong(2)" id="songItem2">
+                    <span class="song-item-icon">🎵</span>
+                    <span>Eternity</span>
+                </div>
+                <div class="song-item" onclick="selectSong(3)" id="songItem3">
+                    <span class="song-item-icon">🎵</span>
+                    <span>Little Bit Better</span>
+                </div>
+                <div class="song-item" onclick="selectSong(4)" id="songItem4">
+                    <span class="song-item-icon">💿</span>
+                    <span>Don't Let Me Go (Album)</span>
                 </div>
             </div>
         </div>
-        
-        <div class="volume-control">
-            <label for="volumeSlider">🔊 Volume</label>
-            <input type="range" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume(this.value)">
-            <span id="volumeValue">50%</span>
-        </div>
-        
-        <div class="playlist">
-            <h4>Playlist</h4>
-            <div class="song-item active" onclick="selectSong(1)" id="songItem1">
-                <span>🎵 Before You Leave Me</span>
-            </div>
-            <div class="song-item" onclick="selectSong(2)" id="songItem2">
-                <span>🎵 Eternity</span>
-            </div>
-            <div class="song-item" onclick="selectSong(3)" id="songItem3">
-                <span>🎵 Little Bit Better</span>
-            </div>
-            <div class="song-item" onclick="selectSong(4)" id="songItem4">
-                <span>💿 Don't Let Me Go (Album)</span>
-            </div>
-        </div>
-        
-        <!-- Hidden Apple Music Embeds -->
-        <div id="appleMusicPlayer" style="display: none;">
-            <iframe id="song1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameborder="0" 
-                    height="175" 
-                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                    src="https://embed.music.apple.com/us/song/before-you-leave-me/1817735410">
-            </iframe>
-            
-            <iframe id="song2" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameborder="0" 
-                    height="175" 
-                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                    src="https://embed.music.apple.com/us/song/eternity/1817735147">
-            </iframe>
-            
-            <iframe id="song3" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameborder="0" 
-                    height="175" 
-                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                    src="https://embed.music.apple.com/us/song/little-bit-better/1728553691">
-            </iframe>
-            
-            <iframe id="song4" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                    frameborder="0" 
-                    height="450" 
-                    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;display:none;" 
-                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                    src="https://embed.music.apple.com/us/album/dont-let-me-go-single/1846158667">
-            </iframe>
-        </div>
     </div>
-    
+
     <!-- Music Toggle Button -->
     <div id="musicToggleBtn" class="music-toggle-btn" onclick="openSidebar()">
         🎵
@@ -1206,230 +1088,81 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Music Sidebar Control Functions
             let currentSong = 1;
-            let isPlaying = false;
-            let currentVolume = 50;
             const sidebar = document.getElementById('musicSidebar');
             const toggleBtn = document.getElementById('musicToggleBtn');
             const song1 = document.getElementById('song1');
             const song2 = document.getElementById('song2');
             const song3 = document.getElementById('song3');
             const song4 = document.getElementById('song4');
-            
+
             const songs = {
                 1: { name: "Before You Leave Me", artist: "Alex Warren", type: "song" },
                 2: { name: "Eternity", artist: "Alex Warren", type: "song" },
                 3: { name: "Little Bit Better", artist: "Alex Warren", type: "song" },
                 4: { name: "Don't Let Me Go", artist: "Alex Warren", type: "album" }
             };
-            
-        // Debug: Check if elements are found
-        console.log('Music Player Initialization:');
-        console.log('Sidebar:', sidebar);
-        console.log('Toggle Button:', toggleBtn);
-        console.log('Song elements:', { song1, song2, song3, song4 });
 
-        // Make functions globally accessible for onclick handlers
         window.openSidebar = function() {
-            console.log('Opening sidebar...');
             if (sidebar) {
                 sidebar.classList.add('open');
                 if (toggleBtn) toggleBtn.style.display = 'none';
-            } else {
-                console.error('Sidebar element not found!');
             }
         };
-        
+
         window.toggleSidebar = function() {
-            console.log('Toggling sidebar...');
             if (sidebar) {
                 sidebar.classList.remove('open');
                 if (toggleBtn) toggleBtn.style.display = 'flex';
             }
         };
-        
-        // Music Controls
-        window.togglePlayPause = function() {
-            const playBtn = document.getElementById('playPauseBtn');
-            if (isPlaying) {
-                // Pause logic
-                playBtn.textContent = '▶';
-                isPlaying = false;
-                stopProgressTimer();
-            } else {
-                // Play logic
-                playBtn.textContent = '⏸';
-                isPlaying = true;
-                showCurrentSong();
-                startProgressTimer();
-            }
-        };
-        
-        window.nextSong = function() {
-            currentSong = currentSong === 4 ? 1 : currentSong + 1;
-            switchToSong(currentSong);
-        };
-        
-        window.previousSong = function() {
-            currentSong = currentSong === 1 ? 4 : currentSong - 1;
-            switchToSong(currentSong);
-        };
-        
+
         window.selectSong = function(songNumber) {
             currentSong = songNumber;
             switchToSong(currentSong);
         };
-        
-        // Progress Bar and Timer Variables
-        let progressTimer;
-        let currentTimeSeconds = 0;
-        let totalTimeSeconds = 210; // Default 3:30 minutes
-        
-        // Song durations (in seconds) - estimated times
-        const songDurations = {
-            1: 205, // Before You Leave Me ~3:25
-            2: 198, // Eternity ~3:18
-            3: 187, // Little Bit Better ~3:07
-            4: 240  // Don't Let Me Go Album ~4:00
-        };
-        
-        // Progress Bar Functions
-        function updateProgress() {
-            if (isPlaying && currentTimeSeconds < totalTimeSeconds) {
-                currentTimeSeconds++;
-                updateProgressDisplay();
-            }
-        }
-        
-        function updateProgressDisplay() {
-            const progressFill = document.getElementById('progressFill');
-            const progressHandle = document.getElementById('progressHandle');
-            const currentTimeEl = document.getElementById('currentTime');
-            const totalTimeEl = document.getElementById('totalTime');
-            
-            if (progressFill && progressHandle && currentTimeEl && totalTimeEl) {
-                // Update progress bar
-                const percentage = (currentTimeSeconds / totalTimeSeconds) * 100;
-                progressFill.style.width = percentage + '%';
-                progressHandle.style.left = percentage + '%';
-                
-                // Update time displays
-                currentTimeEl.textContent = formatTime(currentTimeSeconds);
-                totalTimeEl.textContent = formatTime(totalTimeSeconds);
-            }
-        }
-        
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-        }
-        
-        function resetProgress() {
-            currentTimeSeconds = 0;
-            totalTimeSeconds = songDurations[currentSong] || 210;
-            updateProgressDisplay();
-        }
-        
-        function startProgressTimer() {
-            if (progressTimer) clearInterval(progressTimer);
-            progressTimer = setInterval(updateProgress, 1000);
-        }
-        
-        function stopProgressTimer() {
-            if (progressTimer) {
-                clearInterval(progressTimer);
-                progressTimer = null;
-            }
-        }
-        
-        // Add click-to-seek functionality
-        function initializeProgressBar() {
-            const progressContainer = document.getElementById('progressBar');
-            if (progressContainer) {
-                progressContainer.addEventListener('click', function(e) {
-                    const rect = progressContainer.getBoundingClientRect();
-                    const clickX = e.clientX - rect.left;
-                    const percentage = clickX / rect.width;
-                    currentTimeSeconds = Math.floor(percentage * totalTimeSeconds);
-                    updateProgressDisplay();
-                });
-            }
-        }
-        
+
         function switchToSong(songNumber) {
-            // Update current song display
             const songData = songs[songNumber];
             document.getElementById('currentSongName').textContent = songData.name;
             document.getElementById('currentArtist').textContent = songData.artist;
-            
-            // Update song cover icon based on type
+
             const songCover = document.querySelector('.song-cover');
             if (songCover) songCover.textContent = songData.type === 'album' ? '💿' : '🎶';
-            
+
             // Update playlist active state
             document.querySelectorAll('.song-item').forEach(item => item.classList.remove('active'));
-            const songItem = document.getElementById(`songItem${songNumber}`);
+            const songItem = document.getElementById('songItem' + songNumber);
             if (songItem) songItem.classList.add('active');
-            
-            // Show the correct iframe and adjust sidebar if needed
+
+            // Show the correct embed
             showCurrentSong();
-            
-            // Reset progress for new song
-            resetProgress();
-            
-            // Auto-play if currently playing
-            if (isPlaying) {
-                const playBtn = document.getElementById('playPauseBtn');
-                if (playBtn) playBtn.textContent = '⏸';
-                startProgressTimer();
-            }
         }
-        
+
         function showCurrentSong() {
-            // Hide all songs first
             if (song1) song1.style.display = 'none';
             if (song2) song2.style.display = 'none';
             if (song3) song3.style.display = 'none';
             if (song4) song4.style.display = 'none';
-            
-            // Reset sidebar width
-            if (sidebar) sidebar.style.width = '350px';
-            
-            // Show the current song
+
+            const embedContainer = document.getElementById('embedContainer');
+
             if (currentSong === 1 && song1) {
                 song1.style.display = 'block';
+                if (embedContainer) embedContainer.style.minHeight = '175px';
             } else if (currentSong === 2 && song2) {
                 song2.style.display = 'block';
+                if (embedContainer) embedContainer.style.minHeight = '175px';
             } else if (currentSong === 3 && song3) {
                 song3.style.display = 'block';
+                if (embedContainer) embedContainer.style.minHeight = '175px';
             } else if (currentSong === 4 && song4) {
                 song4.style.display = 'block';
-                // Make sidebar wider for album view
-                if (sidebar) sidebar.style.width = '400px';
+                if (embedContainer) embedContainer.style.minHeight = '450px';
             }
         }
-        
-        window.changeVolume = function(value) {
-            currentVolume = value;
-            const volumeValueElement = document.getElementById('volumeValue');
-            if (volumeValueElement) volumeValueElement.textContent = value + '%';
-            
-            // Note: Apple Music embeds don't support direct volume control
-            // This is more for UI feedback and could be extended with Web Audio API
-            
-            // Visual feedback for volume change
-            const slider = document.getElementById('volumeSlider');
-            if (slider) {
-                const percentage = (value / 100) * 100;
-                slider.style.background = `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${percentage}%, rgba(255,255,255,0.2) ${percentage}%, rgba(255,255,255,0.2) 100%)`;
-            }
-        };
-        
-        // Initialize volume slider appearance and first song
-        if (window.changeVolume) window.changeVolume(50);
-        switchToSong(1); // Initialize with first song
-        initializeProgressBar(); // Initialize progress bar click functionality
-        resetProgress(); // Set initial progress display
+
+        // Initialize with first song
+        switchToSong(1);
         
         // Xbox Gamertag Copy Function
         window.copyXboxGamertag = function() {
