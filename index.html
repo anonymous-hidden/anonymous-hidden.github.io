@@ -1,1992 +1,743 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CUSTOMIZABLE: Change the page title here -->
-    <title>Cayden | Professional Bio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cayden is an Eagle Scout, cybersecurity student, and the builder behind Darklock and Ridgeline.">
+  <meta name="theme-color" content="#050505">
+  <title>Cayden | Builder of Darklock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050505;
+      --panel: #0d0d0d;
+      --panel-strong: #111111;
+      --line: #242424;
+      --line-soft: #181818;
+      --text: #f5f5f2;
+      --muted: #9b9b96;
+      --green: #91f2ae;
+      --green-dark: #102a18;
+      --violet: #c4b5fd;
+      --violet-dark: #211b35;
+      --max: 1120px;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            /* CUSTOMIZABLE: Change background colors here */
-            background: #0f1419;
-            /* CUSTOMIZABLE: Change main text color here */
-            color: #ffffff;
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
+    * { box-sizing: border-box; }
 
-        .site-nav {
-            position: sticky;
-            top: 0;
-            z-index: 900;
-            background: rgba(15, 20, 30, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.12);
-        }
+    html { scroll-behavior: smooth; }
 
-        .site-nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.75rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .nav-brand {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #fff;
-        }
+    a { color: inherit; }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: color 0.2s;
-        }
+    .skip-link {
+      position: fixed;
+      left: 18px;
+      top: 18px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-150%);
+      transition: transform 180ms ease;
+    }
 
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-        
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* CUSTOMIZABLE: Change background pattern and gradient colors here */
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="code" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="10" y="20" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">01001010</text><text x="10" y="35" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">11010011</text><text x="10" y="50" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">00110101</text><text x="10" y="65" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">10101100</text><text x="10" y="80" font-family="monospace" font-size="8" fill="%23334155" opacity="0.3">01110010</text></pattern></defs><rect width="100%" height="100%" fill="url(%23code)"/></svg>') center/cover,
-                    radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                    linear-gradient(135deg, #0f1419 0%, #1e293b 30%, #334155 100%);
-            z-index: -2;
-        }
-        
-        .shield-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* CUSTOMIZABLE: Change shield size here */
-            width: 200px;
-            height: 240px;
-            z-index: -1;
-            /* CUSTOMIZABLE: Change shield opacity here (0.0 to 1.0) */
-            opacity: 0.08;
-        }
-        
-        .shield {
-            width: 100%;
-            height: 100%;
-            /* CUSTOMIZABLE: Change shield colors here */
-            background: linear-gradient(145deg, #3b82f6, #1d4ed8);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            position: relative;
-            /* CUSTOMIZABLE: Change shield glow effect here */
-            box-shadow: 0 0 50px rgba(59, 130, 246, 0.3);
-        }
-        
-        .shield::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: #0f1419;
-            border-radius: 50%;
-            border: 8px solid #1d4ed8;
-        }
-        
-        .shield::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -40%);
-            width: 20px;
-            height: 25px;
-            background: #1d4ed8;
-            border-radius: 3px 3px 0 0;
-        }
-        
-        /* Music Sidebar Styling */
-        .music-sidebar {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 380px;
-            height: 100vh;
-            background: rgba(15, 20, 30, 0.97);
-            backdrop-filter: blur(24px);
-            border-left: 1px solid rgba(59, 130, 246, 0.15);
-            z-index: 1000;
-            transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: 0;
-            box-shadow: -16px 0 48px rgba(0, 0, 0, 0.5);
-        }
-        .music-sidebar::-webkit-scrollbar { width: 4px; }
-        .music-sidebar::-webkit-scrollbar-track { background: transparent; }
-        .music-sidebar::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 4px; }
+    .skip-link:focus { transform: translateY(0); }
 
-        .music-sidebar.open {
-            right: 0;
-        }
+    .wrap {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
 
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px 16px;
-            position: sticky;
-            top: 0;
-            background: rgba(15, 20, 30, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 2;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(5, 5, 5, 0.88);
+      backdrop-filter: blur(18px);
+    }
 
-        .sidebar-header h3 {
-            color: #ffffff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-        #sidebarToggle {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            width: 34px;
-            height: 34px;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .brand {
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 1.08rem;
+    }
 
-        #sidebarToggle:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-        }
+    .brand span { color: var(--green); }
 
-        .sidebar-content {
-            padding: 20px 24px 24px;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
 
-        /* Now Playing card */
-        .current-song {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 14px 16px;
-            background: rgba(59, 130, 246, 0.08);
-            border-radius: 14px;
-            border: 1px solid rgba(59, 130, 246, 0.12);
-            transition: all 0.25s ease;
-        }
-        .current-song:hover {
-            background: rgba(59, 130, 246, 0.12);
-        }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 160ms ease;
+    }
 
-        .song-info {
-            flex: 1;
-            min-width: 0;
-        }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
 
-        .song-info h4 {
-            color: #ffffff;
-            margin: 0 0 3px 0;
-            font-size: 0.95rem;
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .nav-links .nav-cta {
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: #0b0b0b;
+    }
 
-        .song-info p {
-            color: #64748b;
-            margin: 0;
-            font-size: 0.8rem;
-        }
+    main { overflow: hidden; }
 
-        .song-cover {
-            display: none;
-        }
+    .hero {
+      padding: clamp(88px, 13vw, 160px) 0 clamp(72px, 10vw, 120px);
+      border-bottom: 1px solid var(--line-soft);
+    }
 
-        /* Apple Music embed area */
-        .embed-container {
-            margin-bottom: 24px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            min-height: 175px;
-            transition: all 0.3s ease;
-        }
-        .embed-container iframe {
-            display: block;
-            width: 100%;
-            border-radius: 0;
-        }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-        /* Playlist */
-        .playlist {
-            margin-top: 0;
-        }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(145, 242, 174, 0.09);
+    }
 
-        .playlist h4 {
-            color: #64748b;
-            margin-bottom: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+    h1, h2, h3, p { margin-top: 0; }
 
-        .song-item {
-            padding: 11px 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 10px;
-            margin-bottom: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    h1 {
+      max-width: 920px;
+      margin-bottom: 28px;
+      font-size: clamp(3.7rem, 9vw, 7.8rem);
+      line-height: 0.91;
+      letter-spacing: -0.072em;
+      font-weight: 600;
+    }
 
-        .song-item:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: rgba(59, 130, 246, 0.15);
-        }
+    .serif {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      color: var(--green);
+    }
 
-        .song-item.active {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-        .song-item.active .song-item-icon {
-            color: #3b82f6;
-        }
+    .hero-copy {
+      max-width: 680px;
+      color: #b9b9b4;
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+    }
 
-        .song-item-icon {
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            width: 20px;
-            text-align: center;
-        }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
 
-        .song-item span {
-            color: #e2e8f0;
-            font-size: 0.88rem;
-            font-weight: 500;
-        }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
 
-        .music-toggle-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            background: rgba(15, 20, 30, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            cursor: pointer;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 999;
-        }
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #071009;
+    }
 
-        .music-toggle-btn:hover {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
-        }
-        
-        /* Tetris Game Styling */
-        .tetris-toggle-btn {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        
-        .tetris-toggle-btn:hover {
-            background: rgba(34, 197, 94, 0.2);
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
-        }
-        
-        .tetris-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            backdrop-filter: blur(10px);
-        }
-        
-        .tetris-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(30, 41, 59, 0.95);
-            border: 2px solid rgba(34, 197, 94, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow: auto;
-        }
-        
-        .tetris-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
-        }
-        
-        .tetris-header h2 {
-            color: #22c55e;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        
-        .tetris-close {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            color: #ef4444;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .tetris-close:hover {
-            background: rgba(239, 68, 68, 0.4);
-            transform: scale(1.1);
-        }
-        
-        .tetris-game-area {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        
-        .tetris-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            min-width: 120px;
-        }
-        
-        .tetris-info > div {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .tetris-info h3 {
-            color: #22c55e;
-            margin: 0 0 10px 0;
-            font-size: 1rem;
-        }
-        
-        .tetris-info div div {
-            color: #ffffff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-        
-        #tetrisCanvas {
-            border: 2px solid #22c55e;
-            border-radius: 10px;
-            background: #000000;
-        }
-        
-        #tetrisNext {
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 5px;
-            background: #000000;
-        }
-        
-        .tetris-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 150px;
-        }
-        
-        .tetris-controls h3 {
-            color: #22c55e;
-            margin: 0 0 10px 0;
-            text-align: center;
-        }
-        
-        .tetris-controls p {
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0;
-            font-size: 0.9rem;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .tetris-controls button {
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 8px;
-            color: #ffffff;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            margin-top: 5px;
-        }
-        
-        .tetris-controls button:hover:not(:disabled) {
-            background: rgba(34, 197, 94, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .tetris-controls button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--panel-strong);
+      border-color: #3a3a3a;
+    }
 
-        @keyframes shimmer {
-            0% { transform: translateX(-20px); }
-            100% { transform: translateX(20px); }
-        }
+    .button.primary:hover {
+      background: #adf8c1;
+      border-color: #adf8c1;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
-        }
+    .button svg { width: 18px; height: 18px; }
 
-        .profile-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
-        }
-        
-        .name {
-            font-family: 'Poppins', sans-serif;
-            /* CUSTOMIZABLE: Change name font size here */
-            font-size: 3.5rem;
-            font-weight: 700;
-            /* CUSTOMIZABLE: Change name text gradient colors here */
-            background: linear-gradient(135deg, #ffffff, #e2e8f0);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tagline {
-            /* CUSTOMIZABLE: Change tagline font size here */
-            font-size: 1.3rem;
-            margin-top: 1rem;
-            opacity: 0.8;
-            letter-spacing: 1px;
-            /* CUSTOMIZABLE: Change tagline color here */
-            color: #94a3b8;
-            font-weight: 400;
-        }
-        
-        .bio-section {
-            /* CUSTOMIZABLE: Change section background color and transparency here */
-            background: rgba(30, 41, 59, 0.7);
-            /* CUSTOMIZABLE: Change section border color here */
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            /* CUSTOMIZABLE: Change section corner roundness here */
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            backdrop-filter: blur(10px);
-            /* CUSTOMIZABLE: Change section shadow here */
-            box-shadow: 
-                0 4px 20px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+    .section {
+      padding: clamp(72px, 10vw, 120px) 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
 
-        .bio-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .bio-section:hover {
-            transform: translateY(-2px);
-            /* CUSTOMIZABLE: Change section hover border color here */
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.55fr 1.45fr;
+      gap: 48px;
+      margin-bottom: 42px;
+    }
 
-        .bio-section p {
-            line-height: 1.75;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 1rem;
-        }
+    .section-kicker {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-        .bio-section p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            /* CUSTOMIZABLE: Change section title font size here */
-            font-size: 1.8rem;
-            margin-bottom: 1.25rem;
-            /* CUSTOMIZABLE: Change section title color here */
-            color: #3b82f6;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    h2 {
+      max-width: 760px;
+      margin-bottom: 0;
+      font-size: clamp(2.35rem, 5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 600;
+    }
 
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 1.4em;
-            background: linear-gradient(180deg, #3b82f6, #1d4ed8);
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .skill-card {
-            /* CUSTOMIZABLE: Change skill card background and transparency here */
-            background: rgba(59, 130, 246, 0.1);
-            /* CUSTOMIZABLE: Change skill card border color here */
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            /* CUSTOMIZABLE: Change skill card corner roundness here */
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            /* CUSTOMIZABLE: Change how much skill cards lift on hover here */
-            transform: translateY(-5px);
-            /* CUSTOMIZABLE: Change skill card hover shadow here */
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
-            /* CUSTOMIZABLE: Change skill card hover background here */
-            background: rgba(59, 130, 246, 0.15);
-            /* CUSTOMIZABLE: Change skill card hover border here */
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        
-        .skill-icon {
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
+    .bio-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
 
-        .skill-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #e2e8f0;
-            margin-bottom: 0.5rem;
-        }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--panel);
+    }
 
-        .skill-card p {
-            font-size: 0.875rem;
-            color: #94a3b8;
-            line-height: 1.5;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .social-link {
-            display: inline-block;
-            padding: 1rem 2rem;
-            /* CUSTOMIZABLE: Change social link background here */
-            background: rgba(59, 130, 246, 0.1);
-            /* CUSTOMIZABLE: Change social link border here */
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            /* CUSTOMIZABLE: Change social link text color here */
-            color: #3b82f6;
-            text-decoration: none;
-            /* CUSTOMIZABLE: Change social link corner roundness here */
-            border-radius: 50px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            /* CUSTOMIZABLE: Change social link hover animation color here */
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .social-link:hover::before {
-            left: 100%;
-        }
-        
-        .social-link:hover {
-            /* CUSTOMIZABLE: Change social link hover background here */
-            background: rgba(59, 130, 246, 0.2);
-            /* CUSTOMIZABLE: Change social link hover shadow here */
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
-            /* CUSTOMIZABLE: Change how much social links lift on hover here */
-            transform: translateY(-2px);
-            /* CUSTOMIZABLE: Change social link hover border here */
-            border-color: rgba(59, 130, 246, 0.5);
-            /* CUSTOMIZABLE: Change social link hover text color here */
-            color: #ffffff;
-        }
-        
-        /* Security Tools Section Styling */
-        .security-tools {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 1.5rem;
-        }
-        
-        .tool-link {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tool-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .tool-link:hover::before {
-            left: 100%;
-        }
-        
-        .tool-link:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
-        }
-        
-        .tool-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            width: 44px;
-            height: 44px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 10px;
-            flex-shrink: 0;
-            margin-right: 14px;
-        }
+    .story-card { padding: clamp(28px, 5vw, 54px); }
 
-        .site-footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            margin-top: 2rem;
-        }
+    .story-card p {
+      color: #c2c2bd;
+      font-size: clamp(1.03rem, 2vw, 1.18rem);
+    }
 
-        .site-footer p {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.85rem;
-        }
-        
-        .tool-info h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        
-        .tool-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
-        }
+    .story-card p:last-child { margin-bottom: 0; }
 
-        .project-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 6px;
-            flex-wrap: wrap;
-        }
+    .fact-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-        .project-lang {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 20px;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            color: #93c5fd;
-        }
+    .fact-card {
+      flex: 1;
+      padding: 26px;
+    }
 
-        .project-lang.lang-ts { background: rgba(49, 120, 198, 0.15); border-color: rgba(49, 120, 198, 0.3); color: #60a5fa; }
-        .project-lang.lang-rust { background: rgba(222, 100, 30, 0.12); border-color: rgba(222, 100, 30, 0.25); color: #fb923c; }
-        .project-lang.lang-js { background: rgba(234, 179, 8, 0.12); border-color: rgba(234, 179, 8, 0.25); color: #fbbf24; }
-        .project-lang.lang-py { background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.25); color: #93c5fd; }
-        .project-lang.lang-sh { background: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.2); color: #86efac; }
+    .fact-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
 
-        .project-badge {
-            display: inline-flex;
-            align-items: center;
-            font-size: 0.7rem;
-            padding: 2px 7px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 500;
-        }
-        
-        /* Responsive design for security tools */
-        @media (min-width: 768px) {
-            .security-tools {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .security-tools {
-                grid-template-columns: 1fr;
-            }
-        }
+    .fact-value {
+      display: block;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
 
-        .terminal {
-            background: rgba(15, 20, 25, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 8px;
-            padding: 1.5rem;
-            font-family: 'Courier New', monospace;
-            color: #e2e8f0;
-            margin: 1rem 0;
-        }
-        
-        .terminal-header {
-            color: #3b82f6;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .typing {
-            overflow: hidden;
-            border-right: 2px solid #3b82f6;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 1s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #3b82f6; }
-        }
-        
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
 
-        @media (max-width: 600px) {
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+    .project-card {
+      min-height: 470px;
+      padding: clamp(28px, 4vw, 42px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -90px;
+      bottom: -110px;
+      border-radius: 50%;
+      background: var(--project-glow);
+      filter: blur(70px);
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .project-card.darklock {
+      --project-color: var(--green);
+      --project-dark: var(--green-dark);
+      --project-glow: #4ade80;
+    }
+
+    .project-card.ridgeline {
+      --project-color: var(--violet);
+      --project-dark: var(--violet-dark);
+      --project-glow: #8b5cf6;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .project-mark {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--project-color) 28%, transparent);
+      border-radius: 16px;
+      background: var(--project-dark);
+      color: var(--project-color);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    .project-state {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .project-card h3 {
+      margin: 60px 0 12px;
+      font-size: clamp(2.3rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .project-card p {
+      max-width: 490px;
+      color: #adada8;
+      font-size: 1.02rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 32px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #b7b7b1;
+      background: rgba(255, 255, 255, 0.025);
+      font-size: 0.76rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      width: fit-content;
+      color: var(--project-color);
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-link span {
+      display: inline-block;
+      margin-left: 5px;
+      transition: transform 160ms ease;
+    }
+
+    .project-link:hover span { transform: translate(3px, -3px); }
+
+    .interests {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .interest-card {
+      min-height: 230px;
+      padding: 28px;
+    }
+
+    .interest-number {
+      display: block;
+      margin-bottom: 44px;
+      color: #555550;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.2rem;
+    }
+
+    .interest-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+    }
+
+    .interest-card p { margin-bottom: 0; color: var(--muted); }
+
+    .quote-card {
+      margin-top: 16px;
+      padding: clamp(36px, 7vw, 72px);
+      text-align: center;
+    }
+
+    blockquote {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    blockquote footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-card {
+      padding: clamp(36px, 7vw, 76px);
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 36px;
+    }
+
+    .contact-card h2 { max-width: 680px; }
+
+    .contact-card p {
+      max-width: 580px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .site-footer {
+      padding: 34px 0 46px;
+      color: #6f6f6b;
+      font-size: 0.84rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-inner a { color: #9a9a95; text-decoration: none; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 560ms ease, transform 560ms ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 4px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 820px) {
+      .section-head,
+      .bio-layout,
+      .projects { grid-template-columns: 1fr; }
+
+      .section-head { gap: 18px; }
+
+      .interests { grid-template-columns: 1fr 1fr; }
+
+      .interest-card:last-child { grid-column: 1 / -1; }
+
+      .contact-card { align-items: flex-start; flex-direction: column; }
+
+      .contact-actions { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+
+      .site-header { position: static; }
+
+      .nav { min-height: 62px; }
+
+      .nav-links a:not(.nav-cta) { display: none; }
+
+      .hero { padding-top: 76px; }
+
+      h1 { font-size: clamp(3.25rem, 18vw, 5rem); }
+
+      .projects,
+      .interests { grid-template-columns: 1fr; }
+
+      .interest-card:last-child { grid-column: auto; }
+
+      .project-card { min-height: 430px; }
+
+      .project-card h3 { margin-top: 46px; }
+
+      .contact-actions,
+      .contact-actions .button { width: 100%; }
+
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <div class="site-nav-inner">
-            <span class="nav-brand">Cayden</span>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#connect">Connect</a>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#top">Cayden<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#life">Life</a>
+        <a class="nav-cta" href="discord.html">Discord</a>
+      </div>
     </nav>
+  </header>
 
-    <!-- Music Sidebar -->
-    <div id="musicSidebar" class="music-sidebar">
-        <div class="sidebar-header">
-            <h3>Music</h3>
-            <button id="sidebarToggle" onclick="toggleSidebar()">✕</button>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap reveal">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Eagle Scout · Cybersecurity · Builder</p>
+        <h1>I build things that make the internet feel <span class="serif">safer.</span></h1>
+        <p class="hero-copy">I’m Cayden, a cybersecurity student and developer focused on building Darklock and Ridgeline. I care about privacy, thoughtful design, and software people can actually trust.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">See what I’m building</a>
+          <a class="button" href="discord.html" aria-label="Connect with Cayden on Discord">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.03a15.1 15.1 0 0 0-5.87 0L8.56 4A16.5 16.5 0 0 0 4.5 5.35C1.93 9.2 1.24 12.96 1.59 16.66a16.5 16.5 0 0 0 4.98 2.51l1.2-1.65a10.6 10.6 0 0 1-1.89-.9l.46-.36c3.64 1.69 7.6 1.69 11.2 0l.48.36c-.6.36-1.23.66-1.9.9l1.2 1.65a16.5 16.5 0 0 0 4.98-2.51c.42-4.29-.73-8.01-2.8-11.32ZM8.62 14.4c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Zm6.77 0c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Z"/></svg>
+            Discord
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-kicker">About me</span>
+          <h2>Curious by nature. Serious about building.</h2>
         </div>
 
-        <div class="sidebar-content">
-            <div class="current-song">
-                <div class="song-info">
-                    <h4 id="currentSongName">Before You Leave Me</h4>
-                    <p id="currentArtist">Alex Warren</p>
-                </div>
-                <div class="song-cover">🎶</div>
-            </div>
+        <div class="bio-layout">
+          <article class="card story-card reveal">
+            <p>Technology has always been more than a hobby for me. I like taking systems apart, learning why they work, and rebuilding them into something better. That curiosity led me into development, cybersecurity, Linux, networking, and the long process of turning Darklock into a real platform.</p>
+            <p>Away from code, I race RC cars, build LEGO and models, work with gadgets, and play games with friends. I’m an Eagle Scout and a member of the Tribe of Mic O Say, and I try to carry what I learned there into everything I build.</p>
+            <p>I believe in treating people the way I want to be treated. Simple idea, big standard.</p>
+          </article>
 
-            <!-- Apple Music Embed - visible and functional -->
-            <div class="embed-container" id="embedContainer">
-                <iframe id="song1" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                        frameborder="0"
-                        height="175"
-                        style="width:100%;overflow:hidden;"
-                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        src="https://embed.music.apple.com/us/song/before-you-leave-me/1817735410">
-                </iframe>
-
-                <iframe id="song2" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                        frameborder="0"
-                        height="175"
-                        style="width:100%;overflow:hidden;display:none;"
-                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        src="https://embed.music.apple.com/us/song/eternity/1817735147">
-                </iframe>
-
-                <iframe id="song3" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                        frameborder="0"
-                        height="175"
-                        style="width:100%;overflow:hidden;display:none;"
-                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        src="https://embed.music.apple.com/us/song/little-bit-better/1728553691">
-                </iframe>
-
-                <iframe id="song4" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-                        frameborder="0"
-                        height="450"
-                        style="width:100%;overflow:hidden;display:none;"
-                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                        src="https://embed.music.apple.com/us/album/dont-let-me-go-single/1846158667">
-                </iframe>
-            </div>
-
-            <div class="playlist">
-                <h4>Playlist</h4>
-                <div class="song-item active" onclick="selectSong(1)" id="songItem1">
-                    <span>Before You Leave Me</span>
-                </div>
-                <div class="song-item" onclick="selectSong(2)" id="songItem2">
-                    <span>Eternity</span>
-                </div>
-                <div class="song-item" onclick="selectSong(3)" id="songItem3">
-                    <span>Little Bit Better</span>
-                </div>
-                <div class="song-item" onclick="selectSong(4)" id="songItem4">
-                    <span>Don't Let Me Go (Album)</span>
-                </div>
-            </div>
+          <div class="fact-stack">
+            <article class="card fact-card reveal">
+              <span class="fact-label">Current focus</span>
+              <span class="fact-value">Cybersecurity and secure software</span>
+            </article>
+            <article class="card fact-card reveal">
+              <span class="fact-label">Outside of tech</span>
+              <span class="fact-value">Eagle Scout, gamer, builder, happily taken</span>
+            </article>
+            <article class="card fact-card reveal">
+              <span class="fact-label">A few favorites</span>
+              <span class="fact-value">Green, January 31, late night project sessions</span>
+            </article>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <!-- Music Toggle Button -->
-    <div id="musicToggleBtn" class="music-toggle-btn" onclick="openSidebar()">
-        ♪
-    </div>
-
-    <!-- Tetris Game Button -->
-    <div id="tetrisToggleBtn" class="tetris-toggle-btn" onclick="openTetris()">
-        T
-    </div>
-
-    <!-- Tetris Game Modal -->
-    <div id="tetrisModal" class="tetris-modal">
-        <div class="tetris-container">
-            <div class="tetris-header">
-                <h2>Tetris</h2>
-                <button class="tetris-close" onclick="closeTetris()">✕</button>
-            </div>
-            <div class="tetris-game-area">
-                <div class="tetris-info">
-                    <div class="tetris-score">
-                        <h3>Score</h3>
-                        <div id="tetrisScore">0</div>
-                    </div>
-                    <div class="tetris-level">
-                        <h3>Level</h3>
-                        <div id="tetrisLevel">1</div>
-                    </div>
-                    <div class="tetris-lines">
-                        <h3>Lines</h3>
-                        <div id="tetrisLines">0</div>
-                    </div>
-                    <div class="tetris-next">
-                        <h3>Next</h3>
-                        <canvas id="tetrisNext" width="80" height="80"></canvas>
-                    </div>
-                </div>
-                <canvas id="tetrisCanvas" width="300" height="600"></canvas>
-                <div class="tetris-controls">
-                    <h3>Controls</h3>
-                    <p>↑ Rotate</p>
-                    <p>← → Move</p>
-                    <p>↓ Soft Drop</p>
-                    <p>Space Hard Drop</p>
-                    <p>P Pause</p>
-                    <button id="tetrisStartBtn" onclick="startTetris()">Start Game</button>
-                    <button id="tetrisPauseBtn" onclick="pauseTetris()" disabled>Pause</button>
-                    <button id="tetrisResetBtn" onclick="resetTetris()">Reset</button>
-                </div>
-            </div>
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-kicker">What I’m building</span>
+          <h2>Two projects. One focus on trust.</h2>
         </div>
-    </div>
 
-    <div class="background-overlay"></div>
-    <div class="shield-container">
-        <div class="shield"></div>
-    </div>
-    
-    <div class="container">
-        <header class="header">
-            <div class="profile-avatar">C</div>
-            <!-- CUSTOMIZABLE: Change your name here -->
-            <h1 class="name">Cayden</h1>
-            <!-- CUSTOMIZABLE: Change your tagline/subtitle here -->
-            <p class="tagline">Tech Enthusiast & Digital Creator</p>
-        </header>
-        
-        <section id="about" class="bio-section">
-            <!-- CUSTOMIZABLE: Change section title here -->
-            <h2 class="section-title">About Me</h2>
-            <!-- CUSTOMIZABLE: Change your bio text here -->
-            <p>Hi! I'm Cayden — a tech enthusiast, gamer, and lifelong learner. I'm passionate about exploring new tools, building creative projects, and sharing ideas with others.</p>
-            <p>In my free time, I enjoy racing RC cars, building with LEGO, working on models, and tinkering with all kinds of gadgets. I'm also proud to be an Eagle Scout and a member of the Tribe of Mic-O-Say. I believe strongly in the principle: "Treat others how you want to be treated."</p>
-            <p>As a gamer, some of my favorite titles include GTA V, Call of Duty, Minecraft, 7 Days to Die, DayZ, Bloons TD 6, and occasionally ROBLOX.</p>
-            <p>One of my favorite quotes is:</p>
-            <blockquote style="margin: 1rem 0; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; border-radius: 8px; font-style: italic;">
-                "Don't be afraid to fail. It's not the end of the world, and in many ways, it's the first step toward learning something and getting better at it."
-                <br><span style="font-weight: 600; color: #3b82f6;">— Jon Hamm</span>
-            </blockquote>
-            <p>My favorite color is green, and my birthday is January 31st.</p>
-            <p>Feel free to reach out if you ever want to collaborate, share ideas, or just chat. I'm also happily taken by the love of my life.</p>
-        </section>
-        
-        <section id="skills" class="bio-section">
-            <!-- CUSTOMIZABLE: Change section title here -->
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <!-- CUSTOMIZABLE: Change skill cards below - edit icon, title, and description -->
-                <div class="skill-card">
-                    <span class="skill-icon">💻</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
-                    <h3>Development</h3> <!-- CUSTOMIZABLE: Change skill title here -->
-                    <p>Frontend & Backend Technologies</p> <!-- CUSTOMIZABLE: Change skill description here -->
-                </div>
-                <div class="skill-card">
-                    <span class="skill-icon">🎨</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
-                    <h3>Design</h3> <!-- CUSTOMIZABLE: Change skill title here -->
-                    <p>UI/UX & Visual Design</p> <!-- CUSTOMIZABLE: Change skill description here -->
-                </div>
-                <div class="skill-card">
-                    <span class="skill-icon">🚀</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
-                    <h3>Innovation</h3> <!-- CUSTOMIZABLE: Change skill title here -->
-                    <p>Creative Problem Solving</p> <!-- CUSTOMIZABLE: Change skill description here -->
-                </div>
-                <div class="skill-card">
-                    <span class="skill-icon">⚡</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
-                    <h3>Performance</h3> <!-- CUSTOMIZABLE: Change skill title here -->
-                    <p>Optimization & Efficiency</p> <!-- CUSTOMIZABLE: Change skill description here -->
-                </div>
-                <div class="skill-card">
-                    <span class="skill-icon">🔒</span> <!-- CUSTOMIZABLE: Change emoji icon here -->
-                    <h3>Cybersecurity</h3> <!-- CUSTOMIZABLE: Change skill title here -->
-                    <p>Security & Protection</p> <!-- CUSTOMIZABLE: Change skill description here -->
-                </div>
+        <div class="projects">
+          <article class="card project-card darklock reveal">
+            <div class="project-top">
+              <div class="project-mark" aria-hidden="true">D</div>
+              <span class="project-state">Actively building</span>
             </div>
-        </section>
-        
-        <section id="projects" class="bio-section">
-            <h2 class="section-title">Projects</h2>
-            <div class="security-tools">
-
-                <a href="https://github.com/anonymous-hidden/darklock-secure-notes" target="_blank" class="tool-link">
-                    <div class="tool-icon"></div>
-                    <div class="tool-info">
-                        <h3>Darklock Secure Notes</h3>
-                        <p>Zero-knowledge, end-to-end encrypted note-taking for Linux, Windows &amp; Web. Notes encrypted client-side with XChaCha20-Poly1305.</p>
-                        <div class="project-meta">
-                            <span class="project-lang lang-ts">TypeScript</span>
-                            <span class="project-badge">MIT License</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/anonymous-hidden/darklock-guard" target="_blank" class="tool-link">
-                    <div class="tool-icon">🛡️</div>
-                    <div class="tool-info">
-                        <h3>Darklock Guard</h3>
-                        <p>Tamper-resistant desktop security app with layered integrity monitoring, encrypted configuration storage, and verifiable event logging.</p>
-                        <div class="project-meta">
-                            <span class="project-lang lang-rust">Rust</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/anonymous-hidden/Darklock-discord-bot" target="_blank" class="tool-link">
-                    <div class="tool-icon">🤖</div>
-                    <div class="tool-info">
-                        <h3>Darklock Discord Bot</h3>
-                        <p>Custom Discord bot built for the Darklock ecosystem.</p>
-                        <div class="project-meta">
-                            <span class="project-lang lang-js">JavaScript</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/anonymous-hidden/secure-notes" target="_blank" class="tool-link">
-                    <div class="tool-icon">📝</div>
-                    <div class="tool-info">
-                        <h3>Secure Notes (Python)</h3>
-                        <p>Secure notes app with Fernet (AES) encryption and a Tkinter UI. Per-user password-protected private note storage.</p>
-                        <div class="project-meta">
-                            <span class="project-lang lang-py">Python</span>
-                            <span class="project-badge">MIT License</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/anonymous-hidden/discord-nukebot-for-linux" target="_blank" class="tool-link">
-                    <div class="tool-icon">🐧</div>
-                    <div class="tool-info">
-                        <h3>Discord Nukebot for Linux</h3>
-                        <p>Fork of TKperson's Discord nuke bot, modified and adapted for Linux systems.</p>
-                        <div class="project-meta">
-                            <span class="project-lang lang-sh">Shell</span>
-                            <span class="project-badge">Fork</span>
-                        </div>
-                    </div>
-                </a>
-
+            <h3>Darklock</h3>
+            <p>A security platform built to protect online communities with smarter moderation, verification, anti raid protection, and tools that stay understandable when things get serious.</p>
+            <div class="project-tags" aria-label="Darklock focus areas">
+              <span class="tag">Community security</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Privacy</span>
             </div>
-        </section>
-        
-        <section id="connect" class="bio-section">
-            <!-- CUSTOMIZABLE: Change section title here -->
-            <h2 class="section-title">Connect</h2>
-            <div class="social-links">
-                <!-- CUSTOMIZABLE: Change social links below - edit text and add your actual URLs -->
-                <a href="https://github.com/anonymous-hidden" class="social-link">GitHub</a> <!-- CUSTOMIZABLE: Replace 'yourusername' with your GitHub username -->
-                <a href="discord.html" target="_blank" class="social-link">Discord</a> <!-- Opens Discord contact page in new tab -->
-                <a href="email.html" target="_blank" class="social-link">Email</a> <!-- Opens Email contact page in new tab -->
-                <a href="#" onclick="copyXboxGamertag()" class="social-link">Xbox: Coastalion1757</a> <!-- Xbox gamertag - click to copy -->
-            </div>
-        </section>
-        
-        <section id="tools" class="bio-section">
-            <h2 class="section-title">Security & Privacy Tools</h2>
-            <div class="security-tools">
-                <a href="https://www.bitdefender.com/en-us/" target="_blank" class="tool-link">
-                    <div class="tool-icon">🛡️</div>
-                    <div class="tool-info">
-                        <h3>Bitdefender</h3>
-                        <p>Advanced cybersecurity & antivirus protection</p>
-                    </div>
-                </a>
-                
-                <a href="https://proton.me/" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔐</div>
-                    <div class="tool-info">
-                        <h3>Proton</h3>
-                        <p>Encrypted email, VPN & privacy services</p>
-                    </div>
-                </a>
-                
-                <a href="https://veracrypt.jp/en/Home.html" target="_blank" class="tool-link">
-                    <div class="tool-icon">💾</div>
-                    <div class="tool-info">
-                        <h3>VeraCrypt</h3>
-                        <p>Disk encryption & security software</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.wireshark.org/" target="_blank" class="tool-link">
-                    <div class="tool-icon">🌐</div>
-                    <div class="tool-info">
-                        <h3>Wireshark</h3>
-                        <p>Network protocol analyzer & packet capture</p>
-                    </div>
-                </a>
-                
-                <a href="https://nmap.org/" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔍</div>
-                    <div class="tool-info">
-                        <h3>Nmap</h3>
-                        <p>Network discovery & security auditing</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.manageengine.com/vulnerability-management/integrated-vulnerability-and-patch-management.html" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔧</div>
-                    <div class="tool-info">
-                        <h3>ManageEngine</h3>
-                        <p>Integrated vulnerability & patch management</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.cobaltstrike.com/" target="_blank" class="tool-link">
-                    <div class="tool-icon">⚔️</div>
-                    <div class="tool-info">
-                        <h3>Cobalt Strike</h3>
-                        <p>Advanced threat emulation & adversary simulation</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.aikido.dev/use-cases/vulnerability-management" target="_blank" class="tool-link">
-                    <div class="tool-icon">🥋</div>
-                    <div class="tool-info">
-                        <h3>Aikido Security</h3>
-                        <p>Application security & vulnerability management</p>
-                    </div>
-                </a>
-                
-                <a href="https://hashcat.net/hashcat/" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔓</div>
-                    <div class="tool-info">
-                        <h3>Hashcat</h3>
-                        <p>Advanced password recovery & hash cracking</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.exterro.com/digital-forensics-software/forensic-toolkit" target="_blank" class="tool-link">
-                    <div class="tool-icon">🔬</div>
-                    <div class="tool-info">
-                        <h3>Exterro FTK</h3>
-                        <p>Digital forensics & incident response toolkit</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </div>
+            <a class="project-link" href="https://darklock.net" target="_blank" rel="noreferrer">Explore Darklock <span aria-hidden="true">↗</span></a>
+          </article>
 
-    <footer class="site-footer">
-        <div class="site-footer-inner">
-            <p>&copy; 2026 Cayden. All rights reserved.</p>
+          <article class="card project-card ridgeline reveal">
+            <div class="project-top">
+              <div class="project-mark" aria-hidden="true">R</div>
+              <span class="project-state">Actively building</span>
+            </div>
+            <h3>Ridgeline</h3>
+            <p>A private messaging experience inside the Darklock ecosystem. Ridgeline brings secure communication, deep customization, and a calmer approach to staying connected.</p>
+            <div class="project-tags" aria-label="Ridgeline focus areas">
+              <span class="tag">Secure messaging</span>
+              <span class="tag">Encryption</span>
+              <span class="tag">Customization</span>
+            </div>
+            <a class="project-link" href="https://darklock.net" target="_blank" rel="noreferrer">Find Ridgeline <span aria-hidden="true">↗</span></a>
+          </article>
         </div>
-    </footer>
-    
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Music Sidebar Control Functions
-            let currentSong = 1;
-            const sidebar = document.getElementById('musicSidebar');
-            const toggleBtn = document.getElementById('musicToggleBtn');
-            const song1 = document.getElementById('song1');
-            const song2 = document.getElementById('song2');
-            const song3 = document.getElementById('song3');
-            const song4 = document.getElementById('song4');
+      </div>
+    </section>
 
-            const songs = {
-                1: { name: "Before You Leave Me", artist: "Alex Warren", type: "song" },
-                2: { name: "Eternity", artist: "Alex Warren", type: "song" },
-                3: { name: "Little Bit Better", artist: "Alex Warren", type: "song" },
-                4: { name: "Don't Let Me Go", artist: "Alex Warren", type: "album" }
-            };
+    <section class="section" id="life">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-kicker">Beyond the screen</span>
+          <h2>The person behind the projects.</h2>
+        </div>
 
-        window.openSidebar = function() {
-            if (sidebar) {
-                sidebar.classList.add('open');
-                if (toggleBtn) toggleBtn.style.display = 'none';
-            }
-        };
+        <div class="interests">
+          <article class="card interest-card reveal">
+            <span class="interest-number">01</span>
+            <h3>Always making</h3>
+            <p>RC cars, LEGO, models, hardware, and whatever gadget catches my attention next.</p>
+          </article>
+          <article class="card interest-card reveal">
+            <span class="interest-number">02</span>
+            <h3>Gaming with friends</h3>
+            <p>Minecraft, GTA V, Call of Duty, DayZ, 7 Days to Die, Bloons TD 6, and the occasional Roblox session.</p>
+          </article>
+          <article class="card interest-card reveal">
+            <span class="interest-number">03</span>
+            <h3>Learning forward</h3>
+            <p>Cybersecurity, programming, networking, Linux, and the skills that turn ideas into dependable products.</p>
+          </article>
+        </div>
 
-        window.toggleSidebar = function() {
-            if (sidebar) {
-                sidebar.classList.remove('open');
-                if (toggleBtn) toggleBtn.style.display = 'flex';
-            }
-        };
+        <figure class="card quote-card reveal">
+          <blockquote>
+            “You’re only as good as the people you surround yourself with.”
+            <footer>Jon Hamm</footer>
+          </blockquote>
+        </figure>
+      </div>
+    </section>
 
-        window.selectSong = function(songNumber) {
-            currentSong = songNumber;
-            switchToSong(currentSong);
-        };
+    <section class="section" id="connect">
+      <div class="wrap">
+        <div class="card contact-card reveal">
+          <div>
+            <span class="section-kicker">Connect</span>
+            <h2>Want to talk tech, games, or ideas?</h2>
+            <p>Discord is the best place to reach me. You can also follow what I’m building on GitHub.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button primary" href="discord.html">Find me on Discord</a>
+            <a class="button" href="https://github.com/anonymous-hidden" target="_blank" rel="noreferrer">View GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        function switchToSong(songNumber) {
-            const songData = songs[songNumber];
-            document.getElementById('currentSongName').textContent = songData.name;
-            document.getElementById('currentArtist').textContent = songData.artist;
+  <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <span>© <span id="year">2026</span> Cayden</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
 
-            const songCover = document.querySelector('.song-cover');
-            if (songCover) songCover.textContent = '';
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-            // Update playlist active state
-            document.querySelectorAll('.song-item').forEach(item => item.classList.remove('active'));
-            const songItem = document.getElementById('songItem' + songNumber);
-            if (songItem) songItem.classList.add('active');
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const items = document.querySelectorAll(".reveal");
 
-            // Show the correct embed
-            showCurrentSong();
-        }
-
-        function showCurrentSong() {
-            if (song1) song1.style.display = 'none';
-            if (song2) song2.style.display = 'none';
-            if (song3) song3.style.display = 'none';
-            if (song4) song4.style.display = 'none';
-
-            const embedContainer = document.getElementById('embedContainer');
-
-            if (currentSong === 1 && song1) {
-                song1.style.display = 'block';
-                if (embedContainer) embedContainer.style.minHeight = '175px';
-            } else if (currentSong === 2 && song2) {
-                song2.style.display = 'block';
-                if (embedContainer) embedContainer.style.minHeight = '175px';
-            } else if (currentSong === 3 && song3) {
-                song3.style.display = 'block';
-                if (embedContainer) embedContainer.style.minHeight = '175px';
-            } else if (currentSong === 4 && song4) {
-                song4.style.display = 'block';
-                if (embedContainer) embedContainer.style.minHeight = '450px';
-            }
-        }
-
-        // Initialize with first song
-        switchToSong(1);
-        
-        // Xbox Gamertag Copy Function
-        window.copyXboxGamertag = function() {
-            const gamertag = "Coastalion1757";
-            
-            // Try to copy to clipboard
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(gamertag).then(() => {
-                    showToast("Xbox gamertag copied to clipboard! 🎮");
-                }).catch(() => {
-                    fallbackCopyTextToClipboard(gamertag);
-                });
-            } else {
-                fallbackCopyTextToClipboard(gamertag);
-            }
-        };
-        
-        // Fallback copy function for older browsers
-        function fallbackCopyTextToClipboard(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                document.execCommand('copy');
-                showToast("Xbox gamertag copied to clipboard! 🎮");
-            } catch (err) {
-                showToast("Could not copy gamertag. Please copy manually: Coastalion1757");
-            }
-            
-            document.body.removeChild(textArea);
-        }
-        
-        // Toast notification function
-        function showToast(message) {
-            // Remove existing toast if any
-            const existingToast = document.querySelector('.toast');
-            if (existingToast) existingToast.remove();
-            
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = message;
-            toast.style.cssText = `
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(59, 130, 246, 0.9);
-                color: white;
-                padding: 12px 24px;
-                border-radius: 25px;
-                font-size: 0.9rem;
-                font-weight: 500;
-                z-index: 10000;
-                backdrop-filter: blur(10px);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-                animation: toastSlideIn 0.3s ease;
-            `;
-            
-            // Add animation styles
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes toastSlideIn {
-                    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-                    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-                }
-                @keyframes toastSlideOut {
-                    from { opacity: 1; transform: translateX(-50%) translateY(0); }
-                    to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-                }
-            `;
-            if (!document.querySelector('#toast-styles')) {
-                style.id = 'toast-styles';
-                document.head.appendChild(style);
-            }
-            
-            document.body.appendChild(toast);
-            
-            // Remove toast after 3 seconds
-            setTimeout(() => {
-                toast.style.animation = 'toastSlideOut 0.3s ease forwards';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-        
-        // Close sidebar when clicking outside
-        document.addEventListener('click', (e) => {
-            if (sidebar && toggleBtn && !sidebar.contains(e.target) && !toggleBtn.contains(e.target) && sidebar.classList.contains('open')) {
-                if (window.toggleSidebar) window.toggleSidebar();
-            }
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      items.forEach(item => item.classList.add("visible"));
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.12 });
 
-        // Binary trail effect on mouse movement
-        const binaryTrail = [];
-        const maxTrail = 15;
-        
-        document.addEventListener('mousemove', (e) => {
-            // Create binary digit
-            const binary = document.createElement('div');
-            binary.textContent = Math.random() > 0.5 ? '1' : '0';
-            binary.style.cssText = `
-                position: fixed;
-                left: ${e.clientX}px;
-                top: ${e.clientY}px;
-                color: rgba(59, 130, 246, 0.7);
-                font-family: 'Courier New', monospace;
-                font-size: 14px;
-                pointer-events: none;
-                z-index: 1000;
-                transition: all 0.5s ease-out;
-            `;
-            document.body.appendChild(binary);
-            
-            // Add to trail array
-            binaryTrail.push(binary);
-            
-            // Animate and remove
-            setTimeout(() => {
-                binary.style.transform = 'translateY(-20px)';
-                binary.style.opacity = '0';
-            }, 50);
-            
-            setTimeout(() => {
-                if (binary.parentNode) {
-                    binary.parentNode.removeChild(binary);
-                }
-            }, 600);
-            
-            // Limit trail length
-            if (binaryTrail.length > maxTrail) {
-                const oldBinary = binaryTrail.shift();
-                if (oldBinary && oldBinary.parentNode) {
-                    oldBinary.parentNode.removeChild(oldBinary);
-                }
-            }
-            
-            // Original cursor effect
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 12px;
-                    height: 12px;
-                    background: radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, transparent 70%);
-                    pointer-events: none;
-                    z-index: 9999;
-                    border-radius: 50%;
-                    transition: all 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            document.querySelector('.cursor').style.left = e.clientX - 6 + 'px';
-            document.querySelector('.cursor').style.top = e.clientY - 6 + 'px';
-        });
-        
-        // Add typing effect to different elements
-        const typeElements = document.querySelectorAll('.typing');
-        typeElements.forEach((element, index) => {
-            setTimeout(() => {
-                element.style.animation = `typing 3s steps(${element.textContent.length}, end), blink-caret 0.75s step-end infinite`;
-            }, index * 1000);
-        });
-        
-        // Add hover sound effect (optional)
-        document.querySelectorAll('.skill-card, .social-link').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-        
-        // Add subtle parallax effect to shield
-        window.addEventListener('scroll', () => {
-            const shield = document.querySelector('.shield-container');
-            const scrolled = window.pageYOffset;
-            shield.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.1}px)`;
-        });
-
-        // ========== TETRIS GAME ==========
-        let tetrisGame = {
-            canvas: null,
-            ctx: null,
-            nextCanvas: null,
-            nextCtx: null,
-            board: [],
-            currentPiece: null,
-            nextPiece: null,
-            score: 0,
-            level: 1,
-            lines: 0,
-            dropTime: 0,
-            dropInterval: 1000,
-            gameRunning: false,
-            gamePaused: false,
-            gameLoop: null,
-            
-            // Tetris pieces (tetrominoes)
-            pieces: [
-                { // I-piece
-                    shape: [[1,1,1,1]],
-                    color: '#00f0f0'
-                },
-                { // O-piece
-                    shape: [[1,1],[1,1]],
-                    color: '#f0f000'
-                },
-                { // T-piece
-                    shape: [[0,1,0],[1,1,1]],
-                    color: '#a000f0'
-                },
-                { // S-piece
-                    shape: [[0,1,1],[1,1,0]],
-                    color: '#00f000'
-                },
-                { // Z-piece
-                    shape: [[1,1,0],[0,1,1]],
-                    color: '#f00000'
-                },
-                { // J-piece
-                    shape: [[1,0,0],[1,1,1]],
-                    color: '#0000f0'
-                },
-                { // L-piece
-                    shape: [[0,0,1],[1,1,1]],
-                    color: '#f0a000'
-                }
-            ],
-            
-            init() {
-                this.canvas = document.getElementById('tetrisCanvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.nextCanvas = document.getElementById('tetrisNext');
-                this.nextCtx = this.nextCanvas.getContext('2d');
-                
-                // Initialize board (20 rows x 10 columns)
-                this.board = Array(20).fill().map(() => Array(10).fill(0));
-                
-                // Set up keyboard controls
-                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
-                
-                this.generateNextPiece();
-                this.spawnPiece();
-                this.draw();
-            },
-            
-            generateNextPiece() {
-                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
-                this.nextPiece = {
-                    ...this.pieces[pieceIndex],
-                    x: 0,
-                    y: 0
-                };
-                this.drawNext();
-            },
-            
-            spawnPiece() {
-                if (this.nextPiece) {
-                    this.currentPiece = {
-                        ...this.nextPiece,
-                        x: Math.floor((10 - this.nextPiece.shape[0].length) / 2),
-                        y: 0
-                    };
-                    this.generateNextPiece();
-                    
-                    // Check game over
-                    if (this.checkCollision(this.currentPiece, 0, 0)) {
-                        this.gameOver();
-                    }
-                }
-            },
-            
-            checkCollision(piece, dx, dy) {
-                for (let y = 0; y < piece.shape.length; y++) {
-                    for (let x = 0; x < piece.shape[y].length; x++) {
-                        if (piece.shape[y][x]) {
-                            const newX = piece.x + x + dx;
-                            const newY = piece.y + y + dy;
-                            
-                            if (newX < 0 || newX >= 10 || newY >= 20) return true;
-                            if (newY >= 0 && this.board[newY][newX]) return true;
-                        }
-                    }
-                }
-                return false;
-            },
-            
-            movePiece(dx, dy) {
-                if (!this.checkCollision(this.currentPiece, dx, dy)) {
-                    this.currentPiece.x += dx;
-                    this.currentPiece.y += dy;
-                    return true;
-                }
-                return false;
-            },
-            
-            rotatePiece() {
-                const rotated = this.currentPiece.shape[0].map((_, i) =>
-                    this.currentPiece.shape.map(row => row[i]).reverse()
-                );
-                const originalShape = this.currentPiece.shape;
-                this.currentPiece.shape = rotated;
-                
-                if (this.checkCollision(this.currentPiece, 0, 0)) {
-                    this.currentPiece.shape = originalShape;
-                }
-            },
-            
-            hardDrop() {
-                while (this.movePiece(0, 1)) {}
-                this.lockPiece();
-            },
-            
-            lockPiece() {
-                for (let y = 0; y < this.currentPiece.shape.length; y++) {
-                    for (let x = 0; x < this.currentPiece.shape[y].length; x++) {
-                        if (this.currentPiece.shape[y][x]) {
-                            const boardY = this.currentPiece.y + y;
-                            const boardX = this.currentPiece.x + x;
-                            if (boardY >= 0) {
-                                this.board[boardY][boardX] = this.currentPiece.color;
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.spawnPiece();
-            },
-            
-            clearLines() {
-                let linesCleared = 0;
-                for (let y = this.board.length - 1; y >= 0; y--) {
-                    if (this.board[y].every(cell => cell !== 0)) {
-                        this.board.splice(y, 1);
-                        this.board.unshift(Array(10).fill(0));
-                        linesCleared++;
-                        y++; // Check same line again
-                    }
-                }
-                
-                if (linesCleared > 0) {
-                    this.lines += linesCleared;
-                    this.score += linesCleared * 100 * this.level;
-                    this.level = Math.floor(this.lines / 10) + 1;
-                    this.dropInterval = Math.max(50, 1000 - (this.level - 1) * 50);
-                    this.updateUI();
-                }
-            },
-            
-            handleKeyPress(e) {
-                if (!this.gameRunning || this.gamePaused) return;
-                
-                switch(e.code) {
-                    case 'ArrowLeft':
-                        e.preventDefault();
-                        this.movePiece(-1, 0);
-                        break;
-                    case 'ArrowRight':
-                        e.preventDefault();
-                        this.movePiece(1, 0);
-                        break;
-                    case 'ArrowDown':
-                        e.preventDefault();
-                        if (this.movePiece(0, 1)) {
-                            this.score += 1;
-                            this.updateUI();
-                        }
-                        break;
-                    case 'ArrowUp':
-                        e.preventDefault();
-                        this.rotatePiece();
-                        break;
-                    case 'Space':
-                        e.preventDefault();
-                        this.hardDrop();
-                        break;
-                    case 'KeyP':
-                        e.preventDefault();
-                        this.pause();
-                        break;
-                }
-                this.draw();
-            },
-            
-            update(deltaTime) {
-                if (!this.gameRunning || this.gamePaused) return;
-                
-                this.dropTime += deltaTime;
-                if (this.dropTime >= this.dropInterval) {
-                    if (!this.movePiece(0, 1)) {
-                        this.lockPiece();
-                    }
-                    this.dropTime = 0;
-                }
-            },
-            
-            draw() {
-                // Clear canvas
-                this.ctx.fillStyle = '#000';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                // Draw board
-                for (let y = 0; y < this.board.length; y++) {
-                    for (let x = 0; x < this.board[y].length; x++) {
-                        if (this.board[y][x]) {
-                            this.ctx.fillStyle = this.board[y][x];
-                            this.ctx.fillRect(x * 30, y * 30, 29, 29);
-                        }
-                    }
-                }
-                
-                // Draw current piece
-                if (this.currentPiece) {
-                    this.ctx.fillStyle = this.currentPiece.color;
-                    for (let y = 0; y < this.currentPiece.shape.length; y++) {
-                        for (let x = 0; x < this.currentPiece.shape[y].length; x++) {
-                            if (this.currentPiece.shape[y][x]) {
-                                this.ctx.fillRect(
-                                    (this.currentPiece.x + x) * 30,
-                                    (this.currentPiece.y + y) * 30,
-                                    29, 29
-                                );
-                            }
-                        }
-                    }
-                }
-                
-                // Draw grid
-                this.ctx.strokeStyle = '#333';
-                this.ctx.lineWidth = 1;
-                for (let x = 0; x <= 10; x++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(x * 30, 0);
-                    this.ctx.lineTo(x * 30, 600);
-                    this.ctx.stroke();
-                }
-                for (let y = 0; y <= 20; y++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, y * 30);
-                    this.ctx.lineTo(300, y * 30);
-                    this.ctx.stroke();
-                }
-            },
-            
-            drawNext() {
-                this.nextCtx.fillStyle = '#000';
-                this.nextCtx.fillRect(0, 0, 80, 80);
-                
-                if (this.nextPiece) {
-                    this.nextCtx.fillStyle = this.nextPiece.color;
-                    const offsetX = (80 - this.nextPiece.shape[0].length * 15) / 2;
-                    const offsetY = (80 - this.nextPiece.shape.length * 15) / 2;
-                    
-                    for (let y = 0; y < this.nextPiece.shape.length; y++) {
-                        for (let x = 0; x < this.nextPiece.shape[y].length; x++) {
-                            if (this.nextPiece.shape[y][x]) {
-                                this.nextCtx.fillRect(
-                                    offsetX + x * 15,
-                                    offsetY + y * 15,
-                                    14, 14
-                                );
-                            }
-                        }
-                    }
-                }
-            },
-            
-            updateUI() {
-                document.getElementById('tetrisScore').textContent = this.score;
-                document.getElementById('tetrisLevel').textContent = this.level;
-                document.getElementById('tetrisLines').textContent = this.lines;
-            },
-            
-            start() {
-                this.gameRunning = true;
-                this.gamePaused = false;
-                document.getElementById('tetrisStartBtn').disabled = true;
-                document.getElementById('tetrisPauseBtn').disabled = false;
-                
-                let lastTime = 0;
-                const gameStep = (currentTime) => {
-                    const deltaTime = currentTime - lastTime;
-                    lastTime = currentTime;
-                    
-                    this.update(deltaTime);
-                    this.draw();
-                    
-                    if (this.gameRunning) {
-                        this.gameLoop = requestAnimationFrame(gameStep);
-                    }
-                };
-                this.gameLoop = requestAnimationFrame(gameStep);
-            },
-            
-            pause() {
-                this.gamePaused = !this.gamePaused;
-                document.getElementById('tetrisPauseBtn').textContent = 
-                    this.gamePaused ? 'Resume' : 'Pause';
-            },
-            
-            reset() {
-                this.gameRunning = false;
-                this.gamePaused = false;
-                if (this.gameLoop) {
-                    cancelAnimationFrame(this.gameLoop);
-                    this.gameLoop = null;
-                }
-                
-                this.board = Array(20).fill().map(() => Array(10).fill(0));
-                this.score = 0;
-                this.level = 1;
-                this.lines = 0;
-                this.dropTime = 0;
-                this.dropInterval = 1000;
-                
-                document.getElementById('tetrisStartBtn').disabled = false;
-                document.getElementById('tetrisPauseBtn').disabled = true;
-                document.getElementById('tetrisPauseBtn').textContent = 'Pause';
-                
-                this.generateNextPiece();
-                this.spawnPiece();
-                this.updateUI();
-                this.draw();
-            },
-            
-            gameOver() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    cancelAnimationFrame(this.gameLoop);
-                }
-                
-                showToast(`Game Over! Final Score: ${this.score}`);
-                
-                document.getElementById('tetrisStartBtn').disabled = false;
-                document.getElementById('tetrisPauseBtn').disabled = true;
-            }
-        };
-
-        // Global Tetris functions
-        window.openTetris = function() {
-            document.getElementById('tetrisModal').style.display = 'block';
-            if (!tetrisGame.canvas) {
-                tetrisGame.init();
-            }
-        };
-
-        window.closeTetris = function() {
-            document.getElementById('tetrisModal').style.display = 'none';
-            if (tetrisGame.gameRunning) {
-                tetrisGame.reset();
-            }
-        };
-
-        window.startTetris = function() {
-            tetrisGame.start();
-        };
-
-        window.pauseTetris = function() {
-            tetrisGame.pause();
-        };
-
-        window.resetTetris = function() {
-            tetrisGame.reset();
-        };
-
-        // Close Tetris modal when clicking outside
-        document.getElementById('tetrisModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeTetris();
-            }
-        });
-
-        // Fade-in animation for sections
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.bio-section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        }); // End of DOMContentLoaded
-    </script>
+      items.forEach(item => observer.observe(item));
+    }
+  </script>
 </body>
 </html>
