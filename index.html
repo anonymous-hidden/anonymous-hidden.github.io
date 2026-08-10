@@ -170,6 +170,60 @@
       -webkit-backdrop-filter: blur(18px) saturate(1.2);
     }
 
+    .achievements {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .achievement-card {
+      min-width: 0;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.03), 0 10px 28px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .achievement-mark {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(15, 39, 48, 0.8);
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .achievement-card.scout .achievement-mark {
+      color: #f1d27a;
+      background: rgba(65, 48, 12, 0.75);
+    }
+
+    .achievement-copy { min-width: 0; }
+
+    .achievement-title {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .achievement-note {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
     .thought {
       margin: 0;
       color: #e8f5f7;
@@ -283,6 +337,7 @@
       .avatar { width: 68px; height: 68px; }
       h1 { font-size: 1.8rem; }
       .bio-card { padding: 18px; }
+      .achievements { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -308,10 +363,27 @@
     <div class="details" aria-label="Personal details">
       <span class="detail">Cybersecurity</span>
       <span class="detail">Developer</span>
-      <span class="detail">Eagle Scout</span>
       <span class="detail">January 31</span>
       <span class="detail">Favorite color: green</span>
     </div>
+
+    <p class="label">Achievements</p>
+    <section class="achievements" aria-label="Achievements and certifications">
+      <article class="achievement-card scout">
+        <span class="achievement-mark" aria-hidden="true">E</span>
+        <span class="achievement-copy">
+          <span class="achievement-title">Eagle Scout</span>
+          <span class="achievement-note">Scouting’s highest rank</span>
+        </span>
+      </article>
+      <article class="achievement-card">
+        <span class="achievement-mark" aria-hidden="true">A+</span>
+        <span class="achievement-copy">
+          <span class="achievement-title">CompTIA A+</span>
+          <span class="achievement-note">Certified IT professional</span>
+        </span>
+      </article>
+    </section>
 
     <p class="label">Thoughts</p>
     <section class="thoughts-card" aria-label="Favorite quotes">
