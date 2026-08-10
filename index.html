@@ -191,22 +191,21 @@
       -webkit-backdrop-filter: blur(18px) saturate(1.2);
     }
 
-    .achievement-mark {
-      width: 44px;
-      height: 44px;
+    .achievement-image {
+      width: 50px;
+      height: 50px;
       flex: 0 0 auto;
-      display: grid;
-      place-items: center;
       border-radius: 12px;
-      background: rgba(15, 39, 48, 0.8);
-      color: var(--green);
-      font-size: 0.9rem;
-      font-weight: 700;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: #ffffff;
     }
 
-    .achievement-card.scout .achievement-mark {
-      color: #f1d27a;
-      background: rgba(65, 48, 12, 0.75);
+    .achievement-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .achievement-copy { min-width: 0; }
@@ -370,14 +369,14 @@
     <p class="label">Achievements</p>
     <section class="achievements" aria-label="Achievements and certifications">
       <article class="achievement-card scout">
-        <span class="achievement-mark" aria-hidden="true">E</span>
+        <span class="achievement-image"><img src="assets/eagle-scout-emblem.jpg" alt=""></span>
         <span class="achievement-copy">
           <span class="achievement-title">Eagle Scout</span>
           <span class="achievement-note">Scouting’s highest rank</span>
         </span>
       </article>
       <article class="achievement-card">
-        <span class="achievement-mark" aria-hidden="true">A+</span>
+        <span class="achievement-image"><img src="assets/comptia-a-plus.png" alt=""></span>
         <span class="achievement-copy">
           <span class="achievement-title">CompTIA A+</span>
           <span class="achievement-note">Certified IT professional</span>
