@@ -172,7 +172,7 @@
 
     .achievements {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       margin-bottom: 22px;
     }
@@ -206,6 +206,18 @@
       height: 100%;
       display: block;
       object-fit: cover;
+    }
+
+    .jrotc-mark {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: #fff5d6;
+      background: linear-gradient(145deg, #691b27, #351018);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     .achievement-copy { min-width: 0; }
@@ -380,6 +392,13 @@
         <span class="achievement-copy">
           <span class="achievement-title">CompTIA A+</span>
           <span class="achievement-note">Certified IT professional</span>
+        </span>
+      </article>
+      <article class="achievement-card">
+        <span class="achievement-image" aria-hidden="true"><span class="jrotc-mark">S3</span></span>
+        <span class="achievement-copy">
+          <span class="achievement-title">JROTC</span>
+          <span class="achievement-note">S3 Operations Officer</span>
         </span>
       </article>
     </section>
