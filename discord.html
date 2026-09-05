@@ -3,55 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#10151e">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/bio.css">
+  <meta name="description" content="Find Cayden on Discord.">
   <title>Discord | Cayden</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    :root { color-scheme: dark; --bg: #050505; --panel: #0d0d0d; --line: #242424; --text: #f5f5f2; --muted: #9b9b96; --green: #91f2ae; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-width: 320px; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--bg); color: var(--text); font-family: "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    .back { position: fixed; top: 24px; left: 24px; color: var(--muted); text-decoration: none; font-size: 0.92rem; }
-    .back:hover { color: var(--text); }
-    main { width: min(100%, 560px); }
-    .card { padding: clamp(34px, 8vw, 64px); border: 1px solid var(--line); border-radius: 22px; background: var(--panel); text-align: center; }
-    .mark { width: 62px; height: 62px; display: grid; place-items: center; margin: 0 auto 28px; border-radius: 18px; background: #171d34; color: #b7c1ff; }
-    .mark svg { width: 31px; height: 31px; }
-    h1 { margin: 0 0 12px; font-size: clamp(2.5rem, 10vw, 4rem); line-height: 1; letter-spacing: -0.055em; }
-    .serif { font-family: "Instrument Serif", Georgia, serif; color: var(--green); font-weight: 400; letter-spacing: -0.02em; }
-    p { margin: 0 auto 30px; color: var(--muted); }
-    .username { margin-bottom: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #080808; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: #d8d8d3; overflow-wrap: anywhere; }
-    button { width: 100%; min-height: 50px; border: 1px solid var(--green); border-radius: 12px; background: var(--green); color: #071009; font: inherit; font-weight: 700; cursor: pointer; transition: transform 160ms ease, background 160ms ease; }
-    button:hover { transform: translateY(-2px); background: #adf8c1; }
-    .note { min-height: 20px; margin: 12px 0 0; color: var(--muted); font-size: 0.84rem; }
-    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
-  </style>
 </head>
 <body>
-  <a class="back" href="index.html">← Back to my bio</a>
-  <main>
-    <section class="card">
-      <div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.03a15.1 15.1 0 0 0-5.87 0L8.56 4A16.5 16.5 0 0 0 4.5 5.35C1.93 9.2 1.24 12.96 1.59 16.66a16.5 16.5 0 0 0 4.98 2.51l1.2-1.65a10.6 10.6 0 0 1-1.89-.9l.46-.36c3.64 1.69 7.6 1.69 11.2 0l.48.36c-.6.36-1.23.66-1.9.9l1.2 1.65a16.5 16.5 0 0 0 4.98-2.51c.42-4.29-.73-8.01-2.8-11.32ZM8.62 14.4c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Zm6.77 0c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Z"/></svg></div>
-      <h1>Find me on <span class="serif">Discord.</span></h1>
-      <p>Copy my username and send me a request.</p>
-      <div class="username" id="username">niceman69400000</div>
-      <button id="copyButton" type="button">Copy username</button>
-      <p class="note" id="copyStatus" aria-live="polite"></p>
+  <main class="utility">
+    <a class="back-link" href="/"><span aria-hidden="true">←</span> Back to my bio</a>
+    <section class="surface utility-card" aria-labelledby="discord-title">
+      <p class="utility-label"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 5.34A16.3 16.3 0 0 0 15.44 4l-.5 1.03a15.1 15.1 0 0 0-5.87 0L8.56 4A16.5 16.5 0 0 0 4.5 5.35C1.93 9.2 1.24 12.96 1.59 16.66a16.5 16.5 0 0 0 4.98 2.51l1.2-1.65a10.6 10.6 0 0 1-1.89-.9l.46-.36c3.64 1.69 7.6 1.69 11.2 0l.48.36c-.6.36-1.23.66-1.9.9l1.2 1.65a16.5 16.5 0 0 0 4.98-2.51c.42-4.29-.73-8.01-2.8-11.32ZM8.62 14.4c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Zm6.77 0c-1.1 0-2-1.01-2-2.25s.88-2.25 2-2.25c1.12 0 2.02 1.02 2 2.25 0 1.24-.88 2.25-2 2.25Z"/></svg><span>Discord</span></p>
+      <h1 id="discord-title">Say hi.</h1>
+      <p class="utility-copy">Discord is the easiest place to reach me. Add me using the username below.</p>
+      <div class="username-box">
+        <span class="small-label">Discord username</span>
+        <code class="discord-username" id="username">niceman69400000</code>
+      </div>
+      <button class="button" id="copyButton" type="button" hidden>Copy username</button>
+      <p class="status-message" id="copyStatus" role="status" aria-live="polite">Select the username to copy it.</p>
     </section>
   </main>
   <script>
-    const button = document.getElementById("copyButton");
-    const status = document.getElementById("copyStatus");
-    button.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(document.getElementById("username").textContent.trim());
-        button.textContent = "Copied";
-        status.textContent = "Username copied to your clipboard.";
-      } catch {
-        status.textContent = "Select the username above to copy it.";
-      }
-    });
+    (() => {
+      const button = document.getElementById("copyButton");
+      const username = document.getElementById("username");
+      const status = document.getElementById("copyStatus");
+      let resetTimer;
+      button.hidden = false;
+      status.textContent = "Copy it, then add me as a friend in Discord.";
+
+      button.addEventListener("click", async () => {
+        clearTimeout(resetTimer);
+        button.disabled = true;
+        button.setAttribute("aria-busy", "true");
+        button.textContent = "Copying…";
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+          await navigator.clipboard.writeText(username.textContent.trim());
+          button.textContent = "Copied";
+          status.textContent = "Username copied. See you on Discord.";
+        } catch {
+          button.textContent = "Copy username";
+          status.textContent = "Couldn’t copy automatically. Select the username above to copy it.";
+        } finally {
+          button.disabled = false;
+          button.removeAttribute("aria-busy");
+          resetTimer = setTimeout(() => {
+            button.textContent = "Copy username";
+          }, 2500);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
