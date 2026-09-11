@@ -61,7 +61,8 @@ h1, h2, h3, p { margin: 0; }
 .surface,
 .achievement-card,
 .project-link,
-.social-link {
+.social-link,
+.gratitude-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: #141b27;
@@ -72,7 +73,8 @@ h1, h2, h3, p { margin: 0; }
   .surface,
   .achievement-card,
   .project-link,
-  .social-link {
+  .social-link,
+  .gratitude-card {
     background: var(--surface);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -340,6 +342,59 @@ footer {
   padding-top: 0.25rem;
   color: var(--green);
   font: italic 1.25rem/1.6 Georgia, "Times New Roman", serif;
+}
+
+.gratitude { margin-top: 1.5rem; }
+
+.gratitude-heading {
+  margin: 0 0 0.75rem 0.125rem;
+}
+
+.gratitude-heading .utility-label {
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.gratitude-heading h2 {
+  font: 400 1.625rem/1.25 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.gratitude-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.gratitude-card {
+  min-width: 0;
+  padding: 1.25rem;
+}
+
+.gratitude-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  min-height: 2rem;
+  margin-bottom: 0.875rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid rgba(156, 227, 193, 0.3);
+  border-radius: 999px;
+  background: rgba(10, 32, 29, 0.56);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.gratitude-mark-wide { min-width: 3.5rem; }
+.gratitude-card h3 { font-size: 1rem; font-weight: 650; line-height: 1.4; }
+.gratitude-card p { margin-top: 0.625rem; color: #dce1ea; font-size: 0.9375rem; line-height: 1.65; }
+.gratitude-card .gratitude-role { margin-top: 0.125rem; color: var(--green); font-size: 0.8125rem; }
+
+@media (min-width: 40rem) {
+  .gratitude-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (hover: hover) and (pointer: fine) {
