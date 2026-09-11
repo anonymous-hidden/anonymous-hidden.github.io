@@ -156,6 +156,24 @@ h1 {
 
 .personal-note span { margin-left: 0.125rem; }
 
+.story-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.story-link strong,
+.story-link small { display: block; }
+.story-link strong { font-size: 0.9375rem; font-weight: 600; }
+.story-link small { margin-top: 0.125rem; color: var(--muted); font-size: 0.8125rem; }
+.story-link > span:last-child { color: var(--green); font-size: 1.25rem; transition: transform 160ms ease; }
+
 .profile-section { margin-top: 1.5rem; }
 
 .section-heading {
@@ -277,6 +295,7 @@ footer {
 }
 
 .utility { width: min(100%, 30rem); min-width: 0; }
+.story { width: min(100%, 42rem); min-width: 0; }
 .back-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; margin-bottom: 0.75rem; color: #edf0f8; font-size: 0.875rem; text-decoration: none; text-shadow: 0 1px 6px #000; }
 .back-link:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 
@@ -312,7 +331,19 @@ footer {
 .status-message { min-height: 3em; margin-top: 0.875rem; color: var(--muted); font-size: 0.875rem; }
 .error-card .button { margin-top: 1.5rem; }
 
+.story-card { padding: clamp(1.375rem, 5vw, 2.25rem); }
+.story-card h1 { margin-bottom: 1.5rem; }
+.story-copy { color: #dce1ea; }
+.story-copy p + p { margin-top: 1.125rem; }
+.story-copy p:first-child { color: var(--text); }
+.story-ending {
+  padding-top: 0.25rem;
+  color: var(--green);
+  font: italic 1.25rem/1.6 Georgia, "Times New Roman", serif;
+}
+
 @media (hover: hover) and (pointer: fine) {
+  .story-link:hover > span:last-child { transform: translateX(0.2rem); }
   .project-link:hover { transform: translateY(-2px); border-color: rgba(183, 209, 210, 0.45); background: var(--surface-hover); }
   .social-link:hover { border-color: rgba(183, 209, 210, 0.45); background: var(--surface-hover); }
   .button:hover:not(:disabled) { background: #b2eed2; }
